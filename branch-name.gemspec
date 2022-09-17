@@ -36,5 +36,6 @@ Gem::Specification.new do |spec|
   spec.add_dependency 'colorize', '~> 0.8.1'
   spec.add_dependency 'thor', '~> 1.2', '>= 1.2.1'
 
-  spec.metadata['rubygems_mfa_required'] = 'true'
+  # Remove this for now.
+  # spec.metadata['rubygems_mfa_required'] = 'true'
 end
