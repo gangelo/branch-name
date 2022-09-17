@@ -24,6 +24,18 @@ module Branch
         File.join(system_folder, CONFIG_FILENAME)
       end
 
+      def global_config_file?
+        Dir.exist? global_config_file
+      end
+
+      def local_config_file?
+        Dir.exist? local_config_file
+      end
+
+      def system_config_file?
+        Dir.exist? system_config_file
+      end
+
       def create_global_config_file!
         return false if Dir.exist? global_config_file
 
