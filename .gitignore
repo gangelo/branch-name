@@ -16,5 +16,6 @@
 /.vscode/
 *.code-workspace
 
+.branch-nameconfig
 scratch*.rb
 readme.txt
