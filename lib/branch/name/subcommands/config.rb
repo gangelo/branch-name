@@ -3,18 +3,14 @@
 require 'colorize'
 require 'thor'
 require_relative '../configurable'
+require_relative '../exitable'
 
 module Branch
   module Name
     module Subcommands
       class Config < ::Thor
         include Configurable
-
-        class << self
-          def exit_on_failure?
-            false
-          end
-        end
+        include Exitable
 
         default_task :info
 

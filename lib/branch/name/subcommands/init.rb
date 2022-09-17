@@ -3,6 +3,7 @@
 require 'colorize'
 require 'thor'
 require_relative '../configurable'
+require_relative '../exitable'
 
 module Branch
   module Name
@@ -10,12 +11,7 @@ module Branch
       # https://www.atlassian.com/git/tutorials/setting-up-a-repository/git-config
       class Init < ::Thor
         include Configurable
-
-        class << self
-          def exit_on_failure?
-            false
-          end
-        end
+        include Exitable
 
         default_task :global
 

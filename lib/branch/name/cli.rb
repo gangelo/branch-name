@@ -6,6 +6,7 @@ require 'bundler'
 require 'colorize'
 require 'thor'
 require_relative 'configurable'
+require_relative 'exitable'
 require_relative 'locatable'
 require_relative 'subcommands/config'
 require_relative 'subcommands/init'
@@ -18,12 +19,7 @@ module Branch
     #
     class CLI < ::Thor
       include Locatable
-
-      class << self
-        def exit_on_failure?
-          false
-        end
-      end
+      include Exitable
 
       default_task :create
       map %w[--version -v] => :version
