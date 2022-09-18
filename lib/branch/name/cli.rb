@@ -40,7 +40,7 @@ module Branch
 
         SYNOPSIS
         \x5
-        branch-name create [-dsp] TICKET [DESCRIPTION]
+        branch-name create [-d|-s|-p|-pL|-pF] TICKET [DESCRIPTION]
 
         \x5
         The following options are available:
@@ -48,22 +48,27 @@ module Branch
         \x5 -d: Forces the branch name to lower case.
                 The default is --no-downcase
 
-        \x5\x5 -s DELIMITER: Indicates the DELIMITER that will be used to delimit tokens in the branch name.
-               The default DELIMITER is the '_' (underscore) character.
+        \x5\x5 -s SEPARATOR: Indicates the SEPARATOR that will be used to delimit tokens in the branch name.
+               The default SEPARATOR is: '#{DEFAULT_BRANCH_NAME_OPTIONS['create']['separator']}'.
 
-        \x5\x5 -p LOCATION: Indicates that a project should be created.
-               A "project" is a folder that is created in the LOCATION specified
-               whose name is equivalent to the branch name that is formulated.
-               The default LOCATION is #{Locatable.project_folder(options: options)}.
+        \x5\x5 -p: Indicates that a project should be created.
+               The default is: #{DEFAULT_BRANCH_NAME_OPTIONS['create']['project']}.
 
-        \x5 -f: Used with the -p option. If -f is specified, scratch.rb and readme.txt files
-            will be created in the project folder created.
-            The default is --project-files
+        \x5 -pF: Used with the -p option. If -pF is specified, project files
+            will be created in the PROJECT_LOCATION specified by the -pL option.
+            The default is: #{DEFAULT_BRANCH_NAME_OPTIONS['create']['project_files']}.
+
+        \x5\x5 -pL PROJECT_LOCATION: Indicates where the project should be created.
+            A "project" is a folder that is created in the PROJECT_LOCATION specified,
+            whose name is equivalent to the branch name that is formulated.
+            The default is: "#{Locatable.project_folder(options: options)}".
+
       LONG_DESC
       method_option :downcase, type: :boolean, aliases: '-d'
       method_option :separator, type: :string, aliases: '-s'
-      method_option :project, type: :string, aliases: '-p'
-      method_option :project_files, type: :boolean, aliases: '-f'
+      method_option :project, type: :boolean, aliases: '-p'
+      method_option :project_location, type: :string, aliases: '-pL'
+      method_option :project_files, type: :array, aliases: '-pF'
 
       def create(ticket, ticket_description = nil)
         if ticket.blank?

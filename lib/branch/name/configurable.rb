@@ -16,7 +16,9 @@ module Branch
         'create' => {
           'downcase' => false,
           'separator' => '_',
-          'project_files' => false
+          'project' => false,
+          'project_location' => nil,
+          'project_files' => %w[scratch.rb readme.txt]
         }
       }.freeze
       # rubocop:enable Style/StringHashKeys
