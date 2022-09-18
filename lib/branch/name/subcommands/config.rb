@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-require 'colorize'
 require 'thor'
 require_relative '../configurable'
 require_relative '../exitable'
@@ -41,6 +40,36 @@ module Branch
             say "System config file exists: \"#{system_config_file}\"", :green
           else
             say "System config file does not exist at: \"#{system_folder}\"", :yellow
+          end
+        end
+
+        desc 'delete [OPTION]', 'Removes .branch-name file(s)'
+        long_desc <<-LONG_DESC
+          NAME
+          \x5
+          `branch-name config delete [OPTION]` -- will remove one or all .branch-name file(s)
+          depending on the OPTION.
+
+          SYNOPSIS
+          \x5
+          branch-name config delete [-a|-g|-l|-s]
+        LONG_DESC
+        method_option :all, type: :boolean, aliases: '-a'
+        method_option :global, type: :boolean, aliases: '-g'
+        method_option :local, type: :boolean, aliases: '-l'
+        method_option :system, type: :boolean, aliases: '-s'
+
+        def delete
+          if options[:all]
+            delete_global_config_file!
+            delete_local_config_file!
+            delete_system_config_file!
+          elsif options[:global]
+            delete_global_config_file!
+          elsif options[:local]
+            delete_local_config_file!
+          elsif options[:system]
+            delete_system_config_file!
           end
         end
       end

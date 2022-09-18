@@ -11,7 +11,7 @@ module Branch
       def home_folder
         Dir.home
       end
-      alias_method :global_folder, :home_folder
+      alias global_folder home_folder
       singleton_class.alias_method :global_folder, :home_folder
 
       def local_folder
@@ -22,7 +22,7 @@ module Branch
         system_folder = Pathname.new('/')
         unless system_folder.exist? && system_folder.directory?
           puts "WARNING: system folder #{system_folder} does not exist, " \
-            "using global folder instead (#{global_folder})".red
+               "using global folder instead (#{global_folder})".red
 
           return global_folder
         end

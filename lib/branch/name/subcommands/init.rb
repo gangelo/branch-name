@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-require 'colorize'
 require 'thor'
 require_relative '../configurable'
 require_relative '../exitable'
@@ -15,11 +14,11 @@ module Branch
 
         default_task :global
 
-        desc 'global', 'Creates and initializes a .branch-nameconfig file in the global folder'
+        desc 'global', 'Creates and initializes a .branch-name file in the global folder'
         long_desc <<-LONG_DESC
           NAME
           \x5
-          `branch-name init global` -- will create and initialize a .branch-nameconfig file
+          `branch-name init global` -- will create and initialize a .branch-name file
           in the "#{Locatable.global_folder}" folder.
 
           SYNOPSIS
@@ -30,11 +29,11 @@ module Branch
           create_global_config_file!
         end
 
-        desc 'local', 'Creates and initializes a .branch-nameconfig file in the local folder'
+        desc 'local', 'Creates and initializes a .branch-name file in the local folder'
         long_desc <<-LONG_DESC
           NAME
           \x5
-          `branch-name init local` -- will create and initialize a .branch-nameconfig file
+          `branch-name init local` -- will create and initialize a .branch-name file
           in the "#{Locatable.local_folder}" folder.
 
           SYNOPSIS
@@ -45,11 +44,11 @@ module Branch
           create_local_config_file!
         end
 
-        desc 'system', 'Creates and initializes a .branch-nameconfig file in the system folder'
+        desc 'system', 'Creates and initializes a .branch-name file in the system folder'
         long_desc <<-LONG_DESC
           NAME
           \x5
-          `branch-name init system` -- will create and initialize a .branch-nameconfig file
+          `branch-name init system` -- will create and initialize a .branch-name file
           in the "#{Locatable.system_folder}" folder.
 
           SYNOPSIS

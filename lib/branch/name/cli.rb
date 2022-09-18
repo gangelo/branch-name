@@ -3,17 +3,16 @@
 require 'active_support'
 require 'active_support/core_ext/object/blank'
 require 'bundler'
-require 'colorize'
 require 'thor'
+require_relative 'clipable'
 require_relative 'configurable'
 require_relative 'exitable'
 require_relative 'loadable'
 require_relative 'locatable'
+require_relative 'nameable'
 require_relative 'subcommands/config'
 require_relative 'subcommands/init'
 require_relative 'version'
-
-require 'pry'
 
 module Branch
   module Name
@@ -21,17 +20,14 @@ module Branch
     # The `branch-name` command.
     #
     class CLI < ::Thor
+      include Clipable
       include Exitable
       include Loadable
       include Locatable
+      include Nameable
 
-      # def options
-      #   original_options = super
-      #   default_options = load_options
-      #   return original_options unless default_options.present?
-
-      #   Thor::CoreExt::HashWithIndifferentAccess.new(default_options.merge(original_options))
-      # end
+      class_option :debug, type: :boolean, default: false
+      class_option :verbose, type: :boolean, default: false
 
       default_task :create
       map %w[--version -v] => :version
@@ -65,36 +61,24 @@ module Branch
             The default is --project-files
       LONG_DESC
       method_option :downcase, type: :boolean, aliases: '-d'
-      method_option :separator, type: :string, aliases: '-s', default: '_'
+      method_option :separator, type: :string, aliases: '-s'
       method_option :project, type: :string, aliases: '-p'
       method_option :project_files, type: :boolean, aliases: '-f'
 
       def create(ticket, ticket_description = nil)
-        if ticket.blank? && ticket_description.blank?
-          say_error 'ticket and/or ticket_description is required', :red
+        if ticket.blank?
+          say_error 'ticket is required', :red
           exit 1
         end
 
-        puts options
+        init_options_for! command: :create
 
-        self.options = Thor::CoreExt::HashWithIndifferentAccess.new(load_options[:create].merge(options))
-
-        puts options
-
-        branch_name = "#{ticket} #{ticket_description}".strip
-        branch_name = branch_name.split.join options[:separator]
-        branch_name = branch_name.downcase if options[:downcase]
-        branch_name = branch_name.tr('_', '-') if options[:separator] == '-'
-        branch_name = branch_name.tr('-', '_') if options[:separator] == '_'
-        branch_name = branch_name.squeeze('-') if options[:separator] == '-'
-        branch_name = branch_name.squeeze('_') if options[:separator] == '_'
+        branch_name = "#{ticket} #{ticket_description}"
+        branch_name = normalize_branch_name branch_name
 
         say "Branch name: #{branch_name}", :cyan
 
-        if /darwin/ =~ RUBY_PLATFORM
-          IO.popen('pbcopy', 'w') { |pipe| pipe.puts branch_name }
-          say "\"#{branch_name}\" has been copied to the clipboard!", :green
-        end
+        say "\"#{branch_name}\" has been copied to the clipboard!", :green if copy_to_clipboard branch_name
       end
 
       desc 'init SUBCOMMAND', 'Sets up config files for this gem'
@@ -105,7 +89,20 @@ module Branch
 
       desc '--version, -v', 'Displays this gem version'
       def version
-        puts Branch::Name::VERSION
+        say Branch::Name::VERSION
+      end
+
+      private
+
+      def init_options_for!(command:)
+        say "Options before config file merge: #{options}" if options[:debug]
+
+        load_options = load_options(defaults: DEFAULT_BRANCH_NAME_OPTIONS)[command.to_s] || {}
+        say "No options loaded from config file(s): #{load_options}" if options[:debug] && load_options.blank?
+        say "Options loaded from config file(s): #{load_options}" if options[:debug]
+
+        self.options = Thor::CoreExt::HashWithIndifferentAccess.new(load_options.merge(options))
+        say "Options after config file merge: #{options}" if options[:debug]
       end
     end
   end
