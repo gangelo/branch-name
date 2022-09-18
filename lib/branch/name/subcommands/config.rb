@@ -3,6 +3,7 @@
 require 'thor'
 require_relative '../configurable'
 require_relative '../exitable'
+require_relative 'init'
 
 module Branch
   module Name
@@ -72,6 +73,9 @@ module Branch
             delete_system_config_file!
           end
         end
+
+        desc 'init SUBCOMMAND', 'Sets up config files for this gem'
+        subcommand :init, Branch::Name::Subcommands::Init
       end
     end
   end

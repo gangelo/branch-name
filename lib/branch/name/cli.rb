@@ -11,7 +11,6 @@ require_relative 'loadable'
 require_relative 'locatable'
 require_relative 'nameable'
 require_relative 'subcommands/config'
-require_relative 'subcommands/init'
 require_relative 'version'
 
 module Branch
@@ -85,9 +84,6 @@ module Branch
 
         say "\"#{branch_name}\" has been copied to the clipboard!", :green if copy_to_clipboard branch_name
       end
-
-      desc 'init SUBCOMMAND', 'Sets up config files for this gem'
-      subcommand :init, Branch::Name::Subcommands::Init
 
       desc 'config SUBCOMMAND', 'Manages config files for this gem'
       subcommand :config, Branch::Name::Subcommands::Config

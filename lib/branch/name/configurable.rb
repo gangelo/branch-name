@@ -17,7 +17,7 @@ module Branch
           'downcase' => false,
           'separator' => '_',
           'project' => false,
-          'project_location' => nil,
+          'project_location' => Locatable.project_folder,
           'project_files' => %w[scratch.rb readme.txt]
         }
       }.freeze
