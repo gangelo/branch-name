@@ -38,4 +38,5 @@ Gem::Specification.new do |spec|
 
   # Remove this for now.
   # spec.metadata['rubygems_mfa_required'] = 'true'
+  spec.metadata['rubygems_mfa_required'] = 'true'
 end
