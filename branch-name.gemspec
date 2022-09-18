@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
 
   spec.summary      = 'Generates a branch name based on a JIRA card/ticket number.'
   spec.description  = 'Generates a branch name based on a JIRA card/ticket number.'
-  spec.homepage     = 'https://github.com/gangelo/branch_name'
+  spec.homepage     = 'https://github.com/gangelo/branch-name'
   spec.license      = 'MIT'
 
   spec.required_ruby_version = '>= 3.0.1'
