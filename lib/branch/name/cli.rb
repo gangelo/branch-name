@@ -10,6 +10,7 @@ require_relative 'exitable'
 require_relative 'loadable'
 require_relative 'locatable'
 require_relative 'nameable'
+require_relative 'projectable'
 require_relative 'subcommands/config'
 require_relative 'version'
 
@@ -24,6 +25,7 @@ module Branch
       include Loadable
       include Locatable
       include Nameable
+      include Projectable
 
       class_option :debug, type: :boolean, default: false
       class_option :verbose, type: :boolean, default: false
@@ -61,7 +63,6 @@ module Branch
             A "project" is a folder that is created in the PROJECT_LOCATION specified,
             whose name is equivalent to the branch name that is formulated.
             The default is: "#{Locatable.project_folder(options: options)}".
-
       LONG_DESC
       method_option :downcase, type: :boolean, aliases: '-d'
       method_option :separator, type: :string, aliases: '-s'
@@ -83,6 +84,8 @@ module Branch
         say "Branch name: #{branch_name}", :cyan
 
         say "\"#{branch_name}\" has been copied to the clipboard!", :green if copy_to_clipboard branch_name
+
+        create_project!(branch_name) if options[:project]
       end
 
       desc 'config SUBCOMMAND', 'Manages config files for this gem'
