@@ -7,10 +7,13 @@ require 'colorize'
 require 'thor'
 require_relative 'configurable'
 require_relative 'exitable'
+require_relative 'loadable'
 require_relative 'locatable'
 require_relative 'subcommands/config'
 require_relative 'subcommands/init'
 require_relative 'version'
+
+require 'pry'
 
 module Branch
   module Name
@@ -18,8 +21,17 @@ module Branch
     # The `branch-name` command.
     #
     class CLI < ::Thor
-      include Locatable
       include Exitable
+      include Loadable
+      include Locatable
+
+      # def options
+      #   original_options = super
+      #   default_options = load_options
+      #   return original_options unless default_options.present?
+
+      #   Thor::CoreExt::HashWithIndifferentAccess.new(default_options.merge(original_options))
+      # end
 
       default_task :create
       map %w[--version -v] => :version
@@ -54,14 +66,20 @@ module Branch
       LONG_DESC
       method_option :downcase, type: :boolean, aliases: '-d'
       method_option :separator, type: :string, aliases: '-s', default: '_'
-      method_option :project, type: :string, aliases: '-p', default: "#{Locatable.project_folder(options: options)}"
-      method_option :project_files, type: :boolean, aliases: '-f', default: true
+      method_option :project, type: :string, aliases: '-p'
+      method_option :project_files, type: :boolean, aliases: '-f'
 
       def create(ticket, ticket_description = nil)
         if ticket.blank? && ticket_description.blank?
           say_error 'ticket and/or ticket_description is required', :red
           exit 1
         end
+
+        puts options
+
+        self.options = Thor::CoreExt::HashWithIndifferentAccess.new(load_options[:create].merge(options))
+
+        puts options
 
         branch_name = "#{ticket} #{ticket_description}".strip
         branch_name = branch_name.split.join options[:separator]
