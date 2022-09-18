@@ -37,6 +37,5 @@ Gem::Specification.new do |spec|
   spec.add_dependency 'thor', '~> 1.2', '>= 1.2.1'
 
   # Remove this for now.
-  # spec.metadata['rubygems_mfa_required'] = 'true'
   spec.metadata['rubygems_mfa_required'] = 'true'
 end
