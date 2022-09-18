@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    branch-name (0.1.0.pre.alpha)
+    branch-name (1.0.0.pre.beta)
       activesupport (~> 7.0, >= 7.0.4)
       colorize (~> 0.8.1)
       thor (~> 1.2, >= 1.2.1)
