@@ -8,8 +8,8 @@ Gem::Specification.new do |spec|
   spec.authors      = ['Gene M. Angelo, Jr.']
   spec.email        = ['public.gma@gmail.com']
 
-  spec.summary      = 'Generates a branch name based on a JIRA card/ticket number.'
-  spec.description  = 'Generates a branch name based on a JIRA card/ticket number.'
+  spec.summary      = 'Generates a branch name based on a JIRA ticket/ticket number.'
+  spec.description  = 'Generates a branch name based on a JIRA ticket/ticket number.'
   spec.homepage     = 'https://github.com/gangelo/branch-name'
   spec.license      = 'MIT'
 

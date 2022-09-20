@@ -18,7 +18,7 @@ module Branch
           'separator' => '_',
           'project' => false,
           'project_location' => Locatable.project_folder,
-          'project_files' => %w[scratch.rb readme.txt]
+          'project_files' => %w[readme.txt scratch.rb snippets.rb]
         }
       }.freeze
       # rubocop:enable Style/StringHashKeys
