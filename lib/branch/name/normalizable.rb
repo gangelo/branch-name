@@ -3,7 +3,7 @@
 module Branch
   module Name
     module Normalizable
-      NON_WORD_CHARS_REGEX = /[^\w]/
+      NON_WORD_CHARS_REGEX = /[\W_]/
 
       def normalize_branch_name(ticket_description, ticket)
         normalized_ticket_description = normalize_ticket_description ticket_description
@@ -26,10 +26,10 @@ module Branch
       end
 
       def normalize_token(token)
+        token = token.gsub(NON_WORD_CHARS_REGEX, ' ')
         token = token.strip
           .squeeze(' ')
           .split.join(options[:separator])
-        token = token.gsub(NON_WORD_CHARS_REGEX, '')
         token = token.squeeze(options[:separator])
         token = token.downcase if options[:downcase]
         token
