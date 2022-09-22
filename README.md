@@ -8,9 +8,9 @@
 
 ## Caveats
 
-NOTE: This documentation assumes *macos* and any reference to `<username>` should be assumed to equal `$ whoami` unless otherwise noted.
+NOTE: This documentation assumes *macOS* and any reference to `<username>` should be assumed to equal `$ whoami` unless otherwise noted.
 
-NOTE: This documentation makes reference to *cards* and/or *tickets*; these terms should be considered synonymous, and are used to refer to *user stories*, *tasks*, *bugs*, etc.: work that is normally created against a software development team's [Jira](https://www.atlassian.com/software/jira) Project board while adhering to [Agile development methodology](https://www.atlassian.com/agile#:~:text=Agile%20is%20an%20iterative%20approach,small%2C%20but%20consumable%2C%20increments.). While `branch-name` was created to be used while practicing Agile, `branch-name` can be used outside the Agile context as well.
+NOTE: This documentation makes reference to *cards* and/or *tickets*; these terms should be considered synonymous, and are used to refer to *user stories*, *tasks*, *bugs*, etc.; that is, work that is normally created against a software development team's [Jira](https://www.atlassian.com/software/jira) Project board while adhering to [Agile development methodology](https://www.atlassian.com/agile#:~:text=Agile%20is%20an%20iterative%20approach,small%2C%20but%20consumable%2C%20increments.). While `branch-name` was created to be used while practicing Agile, `branch-name` can be used outside the Agile context as well.
 
 
 ## Installation
@@ -19,7 +19,7 @@ NOTE: This documentation makes reference to *cards* and/or *tickets*; these term
 
 ## Usage/Examples
 
-### `branch-name` help
+### `branch-name` Help
 ```shell
 # Display general branch-name help
 $ branch-name help
@@ -34,7 +34,7 @@ $ branch-name config help init
 $ branch-name config help delete
 ```
 
-### Initialize `branch-name` configuration files
+### Initialize `branch-name` Configuration Files
 Setting up *global* settings would be a good place to start:
 
 ```
@@ -42,7 +42,7 @@ $ branch-name config init global
 #=> Configuration file (/Users/<username>/.branch-name) created
 ```
 
-This creates a `.branch-name` .yaml configuration file the home folder of the current user (`$ whoami` on *macos*) with the following option defaults. The option defaults created will be used with their respective `branch-name` command indicated by the `branch-name` command name under which each option resides. You may manually alter any of the option values to suite your needs. To determine what options are available for each `branch-name` command, simply view help for that particular command. If a `brnch-name` command is *not* found in the `.branch-name` confg file when it is first initialized (e.g. `$ branch-name config init global #=> /Users/<username>/.branch-name`), default options for that particular `branch-name` command is not currently supported.
+This creates a `.branch-name` .yaml configuration file the home folder of the current user (`$ whoami` on *macOS*) with the following option defaults. The option defaults created will be used with their respective `branch-name` command indicated by the `branch-name` command name under which each option resides. You may manually alter any of the option values to suite your needs. To determine what options are available for each `branch-name` command, simply view help for that particular command. If a `brnch-name` command is *not* found in the `.branch-name` confg file when it is first initialized (e.g. `$ branch-name config init global #=> /Users/<username>/.branch-name`), default options for that particular `branch-name` command are not currently supported.
 
 For example, the following default options will be used whenever the `branch-name create` command is executed for the user "`<username>`":
 
@@ -59,7 +59,7 @@ create:
   - readme.txt
   ```
 
-NOTE: It is recommended that you change the default `create: project_location` to a more suitable location depending on your *os*. For example, on *macos* you might want to change this to `"/Users/<username>/Documents"`, `"/Users/<username>/Documents/features"`, or something similar.
+NOTE: It is recommended that you change the default `create: project_location` to a more suitable location depending on your *os*. For example, on *macOS* you might want to change this to `"/Users/<username>/Documents"`, `"/Users/<username>/Documents/features"`, or something similar.
 
 Any or all of these options can be overwritten on the command-line:
 
