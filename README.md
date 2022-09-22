@@ -86,7 +86,7 @@ create:
   - snippets.rb
   ```
 
-This example formulates feature a branch named *lg-12345-pay-down-tech-debt-on-user-model* by converting the ticket and ticket description to lowercase (`-d`) and delimiting the feature branch name tokens with a "-" character (`-s -`). The `-p` option instructs `branch-name create` to create the project folder */Users/<username>/feature-branches/2022/lg-12345-pay-down-tech-debt-on-user-model*. The aforementioned project folder will also contain the following files: readme.txt, scratch.rb and snippets.rb. In addition to this, `branch-name create` will also copy the feature brach name to the clipboard for you. This is convienient when you need to create a feature branch in github, or from the command-line.
+This example formulates feature a branch named *lg-12345-pay-down-tech-debt-on-user-model* by converting the ticket and ticket description to lowercase (`-d`) and delimiting the feature branch name tokens with a "-" character (`-s -`). The `-p` option instructs `branch-name create` to create the project folder */Users/<username>/feature-branches/2022/lg-12345-pay-down-tech-debt-on-user-model*. The aforementioned project folder will also contain the following files: readme.txt, scratch.rb and snippets.rb. In addition to this, `branch-name create` will also copy the feature brach name to the clipboard for you (macOS and Windows currently supported). This is convenient when you need to create a feature branch in github, or from the command-line.
 
 ```shell
 $ branch-name create -p -d -s - "Pay down tech debt on User model" LG-12345
