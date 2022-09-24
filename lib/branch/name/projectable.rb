@@ -11,7 +11,8 @@ module Branch
       def create_project!(branch_name)
         raise 'options[:project] is false' unless options[:project]
 
-        project_folder = "#{options[:project_location]}/#{branch_name}"
+        project_location = Time.new.strftime(options[:project_location])
+        project_folder = "#{project_location}/#{branch_name}"
 
         if Dir.exist? project_folder
           puts "Project folder \"#{project_folder}\" already exists"
@@ -19,7 +20,7 @@ module Branch
           return
         end
 
-        Dir.mkdir project_folder
+        FileUtils.mkdir_p(project_folder)
         create_project_files!(project_folder)
 
         puts "Project folder \"#{project_folder}\" with project files #{options[:project_files]} was created".green
