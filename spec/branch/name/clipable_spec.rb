@@ -29,7 +29,6 @@ RSpec.describe Branch::Name::Clipable, type: :module do
       end
 
       after do
-        binding.pry
         described_class.copy_to_clipboard('text')
       end
 

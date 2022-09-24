@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require 'pry-byebug'
+require 'thor'
 
 require 'branch/name'
 require 'branch/name/clipable'
@@ -12,7 +13,7 @@ require 'branch/name/normalizable'
 require 'branch/name/projectable'
 require 'branch/name/version'
 
-Dir[File.join(Dir.pwd, "spec/support/**/*.rb")].each {|f| require f}
+Dir[File.join(Dir.pwd, 'spec/support/**/*.rb')].each { |f| require f }
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure

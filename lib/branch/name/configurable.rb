@@ -16,8 +16,9 @@ module Branch
         'create' => {
           'downcase' => false,
           'separator' => '_',
+          'format_string' => '%t %d',
           'project' => false,
-          'project_location' => Locatable.project_folder,
+          'project_location' => "#{Locatable.project_folder}/branch-name/projects/%Y/%m (%B)",
           'project_files' => %w[readme.txt scratch.rb snippets.rb]
         }
       }.freeze

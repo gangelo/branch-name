@@ -42,9 +42,9 @@ $ branch-name config init global
 #=> Configuration file (/Users/<username>/.branch-name) created
 ```
 
-This creates a `.branch-name` .yaml configuration file the home folder of the current user (`$ whoami` on *macOS*) with the following option defaults. The option defaults created will be used with their respective `branch-name` command indicated by the `branch-name` command name under which each option resides. You may manually alter any of the option values to suite your needs. To determine what options are available for each `branch-name` command, simply view help for that particular command. If a `brnch-name` command is *not* found in the `.branch-name` confg file when it is first initialized (e.g. `$ branch-name config init global #=> /Users/<username>/.branch-name`), default options for that particular `branch-name` command are not currently supported.
+This creates a `.branch-name` yaml configuration file the home folder of the current user (`$ whoami` on *macOS*) with the below option defaults. The option defaults created will be used with their respective `branch-name` command indicated by the `branch-name` command name under which each option resides. You may manually alter any of the option values to suite your needs. To determine what options are available for each `branch-name` command, simply view help for that particular command. If a `branch-name` command is *not* found in the `.branch-name` config file when it is first initialized (e.g. `$ branch-name config init global #=> /Users/<username>/.branch-name`), default options for that particular `branch-name` command are not currently supported.
 
-For example, the following default options will be used whenever the `branch-name create` command is executed for the user "`<username>`":
+Below is a list of _default_ options created when initializing _global_ options; consequently, these default options will be used whenever the `branch-name create` command is executed for the user "`<username>`":
 
 ```yaml
 # /Users/<username>/.branch-name
@@ -52,23 +52,27 @@ For example, the following default options will be used whenever the `branch-nam
 create:
   downcase: false
   separator: _
+  format_string: "%t %d"
   project: false
-  project_location: "/Users/<username>"
+  project_location: "/Users/<username>/branch-name/projects/%Y/%m (%B)"
   project_files:
-  - scratch.rb
   - readme.txt
+  - scratch.rb
+  - snippets.rb
   ```
 
-NOTE: It is recommended that you change the default `create: project_location` to a more suitable location depending on your *os*. For example, on *macOS* you might want to change this to `"/Users/<username>/Documents"`, `"/Users/<username>/Documents/features"`, or something similar.
+NOTE: You can manually change any of the options you wish. It is recommended that you change the default `create: project_location` to meet your needs, depending on your *os*. For example, on *macOS* you might want to change this to `"/Users/<username>/Documents"`, `"/Users/<username>/Documents/features"`, or something similar.
 
-Any or all of these options can be overwritten on the command-line:
+The `create: project_location` option string also accepts any [`Time.strftime`](`https://apidock.com/ruby/Time/strftime`) format directives.
 
-For more information:
+The `create: format_string` option string can be used to position the *ticket* (`%t`) and *ticket description* (`%d`) within the branch name formulated. You can also include any other information you wish in the format string, for example: "`<username> %t %d`". However, non-word characters will be stripped (see `Branch::Name::Normalizable::NON_WORD_CHARS_REGEX` which equates to `/[\W_]/`)
+
+Any or all of these options can also be overwritten on the command-line. For more information:
 `$ branch-name config help init`
 
 ### Creating Feature Branch Names and Projects Examples
 
-NOTE: `branch-name create` really doesn't "create" anything (unless you use the `-p` option, in which case it will create a "project" for you); rather, `branch-name create` simply formulates a suitable feature branch name given a *jira* ticket and *jira* ticket description.
+NOTE: `branch-name create` really doesn't "create" anything (unless you use the `-p` option, in which case it will create a "project" for you); rather, `branch-name create` simply _formulates_ a suitable feature branch name given a *jira* ticket and *jira* ticket description.
 
 NOTE: The below examples will assume the following `global` config file defaults (`$ branch-name config init global`) that have been *manually* manipulated to have the following options:
 
@@ -79,7 +83,7 @@ create:
   downcase: false
   separator: _
   project: false
-  project_location: "/Users/<username>/feature-branches/2022"
+  project_location: "/Users/<username>/feature-branches/%Y"
   project_files:
   - readme.txt
   - scratch.rb

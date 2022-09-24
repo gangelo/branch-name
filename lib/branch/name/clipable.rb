@@ -21,7 +21,6 @@ module Branch
 
       def copy_to_clipboard_macos(text)
         copy_to_clipboard_with(app: 'pbcopy', text: text)
-
       end
 
       def copy_to_clipboard_windows(text)
