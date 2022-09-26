@@ -19,25 +19,10 @@ module Branch
         Dir.pwd
       end
 
-      def system_folder
-        system_folder = Pathname.new('/')
-        unless system_folder.exist? && system_folder.directory?
-          puts "WARNING: system folder #{system_folder} does not exist, " \
-               "using global folder instead (#{global_folder})".red
-
-          return global_folder
-        end
-        system_folder.to_s
-      end
-
       def project_folder(options: {})
         return home_folder if options.blank?
 
         home_folder
-      end
-
-      def system_folder_equals_global_folder?
-        syetem_folder == global_folder
       end
 
       def temp_folder
