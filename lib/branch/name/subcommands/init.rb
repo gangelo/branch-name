@@ -4,33 +4,25 @@ require 'thor'
 require_relative '../configurable'
 require_relative '../exitable'
 require_relative 'nestable'
+require_relative '../task_defaultable'
 
 module Branch
   module Name
     module Subcommands
-      # https://www.atlassian.com/git/tutorials/setting-up-a-repository/git-config
       class Init < ::Thor
         include Configurable
         include Exitable
         include Nestable
+        include TaskDefaultable
 
         class << self
           def ascestor_name
             'config init'
           end
-
-          def subcommand_help_map
-            {
-              global: "#{ascestor_name} global",
-              help: "#{ascestor_name} help [SUBCOMMAND]",
-              local: "#{ascestor_name} local",
-            }
-          end
         end
 
-        default_task :global
-
         desc 'global', 'Creates and initializes a .branch-name file in the global folder'
+        subcommand_help_override "#{ascestor_name} global"
         long_desc <<-LONG_DESC
           NAME
           \x5
@@ -46,6 +38,7 @@ module Branch
         end
 
         desc 'local', 'Creates and initializes a .branch-name file in the local folder'
+        subcommand_help_override "#{ascestor_name} local"
         long_desc <<-LONG_DESC
           NAME
           \x5

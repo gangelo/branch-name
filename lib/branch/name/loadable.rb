@@ -12,7 +12,6 @@ module Branch
       def load_options(defaults: {})
         options = {}
 
-        options.merge!(load_config(system_config_file))
         options.merge!(load_config(global_config_file))
         options.merge!(load_config(local_config_file))
 

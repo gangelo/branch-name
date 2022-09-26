@@ -12,6 +12,7 @@ require_relative 'locatable'
 require_relative 'normalizable'
 require_relative 'projectable'
 require_relative 'subcommands/config'
+require_relative 'task_defaultable'
 require_relative 'version'
 
 module Branch
@@ -26,11 +27,11 @@ module Branch
       include Locatable
       include Normalizable
       include Projectable
+      include TaskDefaultable
 
       class_option :debug, type: :boolean, default: false
       class_option :verbose, type: :boolean, default: false
 
-      default_task :create
       map %w[--version -v] => :version
 
       desc 'create [OPTIONS] DESCRIPTION [TICKET]', 'Formulate a branch name based on a ticket

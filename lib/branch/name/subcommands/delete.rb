@@ -4,6 +4,7 @@ require 'thor'
 require_relative '../configurable'
 require_relative '../exitable'
 require_relative 'nestable'
+require_relative '../task_defaultable'
 
 module Branch
   module Name
@@ -12,23 +13,16 @@ module Branch
         include Configurable
         include Exitable
         include Nestable
+        include TaskDefaultable
 
         class << self
           def ascestor_name
             'config delete'
           end
-
-          def subcommand_help_map
-            {
-              all: "#{ascestor_name} all",
-              global: "#{ascestor_name} global",
-              help: "#{ascestor_name} help [SUBCOMMAND]",
-              local: "#{ascestor_name} local",
-            }
-          end
         end
 
         desc 'all', 'Deletes all config files (local and global) for this gem'
+        subcommand_help_override "#{ascestor_name} all"
         long_desc <<-LONG_DESC
           NAME
           \x5
@@ -46,6 +40,7 @@ module Branch
         end
 
         desc 'global', 'Deletes the global config file for this gem'
+        subcommand_help_override "#{ascestor_name} global"
         long_desc <<-LONG_DESC
           NAME
           \x5
@@ -62,6 +57,7 @@ module Branch
         end
 
         desc 'local', 'Deletes the local config file for this gem'
+        subcommand_help_override "#{ascestor_name} local"
         long_desc <<-LONG_DESC
           NAME
           \x5

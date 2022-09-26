@@ -34,20 +34,12 @@ module Branch
         File.join(local_folder, CONFIG_FILENAME)
       end
 
-      def system_config_file
-        File.join(system_folder, CONFIG_FILENAME)
-      end
-
       def global_config_file?
         File.exist? global_config_file
       end
 
       def local_config_file?
         File.exist? local_config_file
-      end
-
-      def system_config_file?
-        File.exist? system_config_file
       end
 
       def create_global_config_file!
@@ -58,20 +50,12 @@ module Branch
         create_config_file local_config_file
       end
 
-      def create_system_config_file!
-        create_config_file system_config_file
-      end
-
       def delete_global_config_file!
         delete_config_file global_config_file
       end
 
       def delete_local_config_file!
         delete_config_file local_config_file
-      end
-
-      def delete_system_config_file!
-        delete_config_file system_config_file
       end
 
       private

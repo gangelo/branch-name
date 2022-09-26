@@ -5,6 +5,7 @@ require_relative '../configurable'
 require_relative '../exitable'
 require_relative 'delete'
 require_relative 'init'
+require_relative '../task_defaultable'
 
 module Branch
   module Name
@@ -12,8 +13,7 @@ module Branch
       class Config < ::Thor
         include Configurable
         include Exitable
-
-        default_task :info
+        include TaskDefaultable
 
         desc 'info', 'Displays information about this gem configuration'
         long_desc <<-LONG_DESC
@@ -36,12 +36,6 @@ module Branch
             say "Local config file exists: \"#{local_config_file}\"", :green
           else
             say "Local config file does not exist at: \"#{local_folder}\"", :yellow
-          end
-
-          if system_config_file?
-            say "System config file exists: \"#{system_config_file}\"", :green
-          else
-            say "System config file does not exist at: \"#{system_folder}\"", :yellow
           end
         end
 

@@ -1,6 +1,13 @@
+## ['3.0.0'] - 2022-09-26
+* Enhancements:
+* Changes:
+  * Default default commands to :help.
+  * Remove references to system for options, folder locations, etc. These were not being used and the nature of this tool is that global options should suffice.
+* Bug Fixes: Not really a branch-name bug, but patched Thor bug that displays nested subcommands incorrectly.
+
 ## ['2.2.0'] - 2022-09-24
 * Enhancements:
-  * Add support for `branch-name create` `-x` argument (see `branch-name help create`) which allows you to position the ticket and ticket description within the forulated branch name.
+  * Add support for `branch-name create` `-x` argument (see `branch-name help create`) which allows you to position the ticket and ticket description within the formulated branch name.
   * The `branch-name create :project_location` option string now accepts any [`Time.strftime`](`https://apidock.com/ruby/Time/strftime`) format directive.
   * Add better test coverage, although not what it should be (I'm working on it); this started a "quick and dirty" tool.
   * `branch-name create` will now create the PROJECT_LOCATION if it does not exist.
