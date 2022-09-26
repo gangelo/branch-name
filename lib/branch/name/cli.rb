@@ -72,11 +72,14 @@ module Branch
             The default is: "#{Locatable.project_folder(options: options)}".
 
         \x5 -x FORMAT_STRING: This is a string that determines the format of the branch name
-            that is formulated. The following are a list of required placeholders you must put
-            in your format string to format the brach name: [%t, %d].
+            that is formulated. The following is a list of required placeholders you must put
+            in your format string to format the branch name: [%t, %d].
             \x5Where %t will be replaced by the ticket.
             \x5Where %d will be replaced by the ticket description.
-            \x5The default is: "#{DEFAULT_BRANCH_NAME_OPTIONS['create']['format_string']}".
+            \x5The following is a list of optional placeholders you may put
+            in your format string to format the branch name: [%u].
+            \x5Where %u will be replaced with your username (`Etc.getlogin`, https://rubygems.org/gems/etc).
+            \x5The default format string is: "#{DEFAULT_BRANCH_NAME_OPTIONS['create']['format_string']}".
       LONG_DESC
       method_option :downcase, type: :boolean, aliases: '-d'
       method_option :separator, type: :string, aliases: '-s'
@@ -97,12 +100,18 @@ module Branch
           say_error error.message
           exit 1
         end
-
         say "Branch name: #{branch_name}", :cyan
 
-        say "\"#{branch_name}\" has been copied to the clipboard!", :green if copy_to_clipboard branch_name
+        if options[:project]
+          project_folder = project_folder_from(branch_name) do |error|
+            say_error error.message
+            exit 1
+          end
+          say "Project folder name: #{project_folder}", :cyan
+          create_project!(project_folder)
+        end
 
-        create_project!(branch_name) if options[:project]
+        say "Branch name \"#{branch_name}\" has been copied to the clipboard!", :green if copy_to_clipboard branch_name
       end
 
       desc 'config SUBCOMMAND', 'Manages config files for this gem'

@@ -1,5 +1,9 @@
-## ['3.0.0'] - 2022-09-26
+## ['3.1.0'] - 2022-09-26
 * Enhancements:
+  * Branch names may now be created using a forward-slash (/). See the README.md file for more information.
+  * The `branch-name create :format_string` option string now accepts a %u placeholder which will be replaced with the currently logged in username. See `$ branch-name help create` for more information.
+
+## ['3.0.0'] - 2022-09-26
 * Changes:
   * Default default commands to :help.
   * Remove references to system for options, folder locations, etc. These were not being used and the nature of this tool is that global options should suffice.
