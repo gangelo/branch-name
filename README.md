@@ -93,6 +93,7 @@ NOTE: The below examples will assume the following `global` config file defaults
 create:
   downcase: false
   separator: _
+  format_string: "%t %d"
   project: false
   project_location: "/Users/<username>/feature-branches/%Y"
   project_files:
