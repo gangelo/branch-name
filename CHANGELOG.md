@@ -1,4 +1,8 @@
-## ['3.2.1'] - 2022-09-26
+## ['3.2.2'] - 2022-09-27
+* Changes:
+  * Refactor code that patches Thor incorrect display of nested commands (subcommangs).
+
+## ['3.2.1'] - 2022-09-27
 * Changes:
   * Fix rubocop violations.
   * Miscellaneous mixin refactors.
