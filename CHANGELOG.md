@@ -1,6 +1,8 @@
-## ['3.2.0'] - 2022-09-26
+## ['3.2.1'] - 2022-09-26
 * Changes:
   * Fix rubocop violations.
+  * Miscellaneous mixin refactors.
+* Bug Fixes: Fix bug that displayed subcommand help incorrectly.
 
 ## ['3.1.0'] - 2022-09-26
 * Enhancements:

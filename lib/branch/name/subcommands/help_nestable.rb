@@ -12,11 +12,12 @@ module Branch
           def included(base)
             # Thor override
             base.desc 'help [COMMAND]', 'Describe available commands or one specific command'
-            base.subcommand_help_override 'config init help [SUBCOMMAND]'
+            base.help_override "#{base.ancestor_name} help [SUBCOMMAND]"
             # rubocop:disable Style/OptionalBooleanParameter
-            def help(command = nil, subcommand = false)
-              super
-            end
+            # def help(command = nil, subcommand = false)
+            #   puts "subcommand: #{subcommand}"
+            #   super
+            # end
             # rubocop:enable Style/OptionalBooleanParameter
           end
         end

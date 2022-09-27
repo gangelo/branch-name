@@ -3,6 +3,7 @@
 require 'thor'
 require_relative '../configurable'
 require_relative '../exitable'
+require_relative 'help_nestable'
 require_relative 'nestable'
 require_relative '../task_defaultable'
 
@@ -16,13 +17,16 @@ module Branch
         include TaskDefaultable
 
         class << self
-          def ascestor_name
+          def ancestor_name
             'config init'
           end
         end
 
+        # NOTE: This must be included AFTER defining .ancestor_name
+        include HelpNestable
+
         desc 'global', 'Creates and initializes a .branch-name file in the global folder'
-        subcommand_help_override "#{ascestor_name} global"
+        help_override "#{ancestor_name} global"
         long_desc <<-LONG_DESC
           NAME
           \x5
@@ -38,7 +42,7 @@ module Branch
         end
 
         desc 'local', 'Creates and initializes a .branch-name file in the local folder'
-        subcommand_help_override "#{ascestor_name} local"
+        help_override "#{ancestor_name} local"
         long_desc <<-LONG_DESC
           NAME
           \x5
