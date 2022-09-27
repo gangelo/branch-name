@@ -7,7 +7,7 @@ module Branch
     module Normalizable
       # The regex used to split ticket and ticket description tokens
       # to formulate a source control branch name.
-      BRANCH_NAME_REGEX = /[^\/\w\x20]/
+      BRANCH_NAME_REGEX = %r{[^/\w\x20]}
 
       # The regex used to split ticket and ticket description tokens
       # to formulate a project folder based on the branch name formulated.
@@ -18,7 +18,7 @@ module Branch
         formatted_branch_name = formatted_branch_name.gsub('%t', ticket || '')
         formatted_branch_name = formatted_branch_name.gsub('%d', ticket_description)
         formatted_branch_name = formatted_branch_name.gsub('%u', Etc.getlogin)
-        formatted_branch_name = normalize_token formatted_branch_name, BRANCH_NAME_REGEX
+        normalize_token formatted_branch_name, BRANCH_NAME_REGEX
       rescue Branch::Name::OptionError => e
         raise unless block_given?
 

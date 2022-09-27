@@ -23,16 +23,23 @@ module Branch
           end
 
           # Thor override
-          def banner(command, _namespace = nil, subcommand = false)
+          # rubocop:disable Style/GlobalVars
+          # rubocop:disable Lint/UnusedMethodArgument
+          # rubocop:disable Style/OptionalBooleanParameter
+          def banner(command, namespace = nil, subcommand = false)
             command.formatted_usage(self, $thor_runner, subcommand).split("\n").map do |_formatted_usage|
-              command_name = command.name.to_sym
               "#{basename} #{@subcommand_help_override[command.usage]}"
             end.join("\n")
           end
+          # rubocop:enable Style/GlobalVars
+          # rubocop:enable Lint/UnusedMethodArgument
+          # rubocop:enable Style/OptionalBooleanParameter
 
           def subcommand_help_override(help_string)
-            raise "Thor.desc must be called for \"#{help_string}\" " \
-              'prior to calling .subcommand_help_override' if @usage.blank?
+            if @usage.blank?
+              raise "Thor.desc must be called for \"#{help_string}\" " \
+                    'prior to calling .subcommand_help_override'
+            end
 
             @subcommand_help_override = {} unless defined? @subcommand_help_override
             @subcommand_help_override[@usage] = help_string

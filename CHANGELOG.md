@@ -1,3 +1,7 @@
+## ['3.2.0'] - 2022-09-26
+* Changes:
+  * Fix rubocop violations.
+
 ## ['3.1.0'] - 2022-09-26
 * Enhancements:
   * Branch names may now be created using a forward-slash (/). See the README.md file for more information.
