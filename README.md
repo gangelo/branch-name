@@ -113,6 +113,27 @@ This example simply formulates feature a branch named *Add_create_and_destroy_se
 ```shell
 $ branch-name create "Add #create and #destroy session controller actions"
 ```
+#### Creating a Branch Name that Contains Forward-Slashes (`/`)
+
+This can be accomplished in different ways; here are some examples:
+
+Embed the forward-slashes using the `--format-string/-x` option:
+
+```shell
+$ branch-name create -x "%u/%t %d" "Remove debug code" UX-54321
+#=> Branch name: <username>/ux-54321-remove-debug-code
+...
+```
+
+Embed the forward-slashes in the ticket description itself. Depending on *where* you want your forward-slashes to appear, you'll have to place them appropriately:
+
+```shell
+$ branch-name create "<username>/UX-54321 Remove debug code"
+#=> Branch name: <username>/ux-54321-remove-debug-code
+...
+```
+
+NOTE: Project folders created (`--project/-p`) will replace any forward-slash with the `create: :separator` option value.
 
 ## Development
 
