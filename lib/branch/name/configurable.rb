@@ -3,14 +3,17 @@
 require 'colorize'
 require 'fileutils'
 require 'yaml'
+require_relative 'colorizable'
 require_relative 'locatable'
 
 module Branch
   module Name
     module Configurable
+      include Colorizable
       include Locatable
 
       CONFIG_FILENAME = '.branch-name'
+
       # rubocop:disable Style/StringHashKeys - YAML writing/loading necessitates this
       DEFAULT_BRANCH_NAME_OPTIONS = {
         'create' => {
@@ -58,36 +61,61 @@ module Branch
         delete_config_file local_config_file
       end
 
+      def print_global_config_file
+        config_file = global_config_file
+        if global_config_file?
+          say "Global config file (#{config_file}) contents:", SUCCESS
+          print_config_file config_file
+        else
+          say "Global config file (#{config_file}) does not exist.", WARNING
+        end
+      end
+
+      def print_local_config_file
+        config_file = local_config_file
+        if local_config_file?
+          say "Local config file (#{config_file}) contents:", SUCCESS
+          print_config_file config_file
+        else
+          say "Local config file (#{config_file}) does not exist.", WARNING
+        end
+      end
+
       private
 
       def create_config_file(config_file)
         folder = File.dirname(config_file)
         unless Dir.exist?(folder)
-          say "Destination folder for configuration file (#{folder}) does not exist".red
+          say "Destination folder for configuration file (#{folder}) does not exist", ERROR
           return false
         end
 
         if File.exist?(config_file)
-          puts "Configuration file (#{config_file}) already exists".yellow
+          say "Configuration file (#{config_file}) already exists", WARNING
           return false
         end
 
         File.write(config_file, DEFAULT_BRANCH_NAME_OPTIONS.to_yaml)
-        puts "Configuration file (#{config_file}) created".green
+        say "Configuration file (#{config_file}) created", SUCCESS
 
         true
       end
 
       def delete_config_file(config_file)
         unless File.exist?(config_file)
-          puts "Configuration file (#{config_file}) does not exist".yellow
+          say "Configuration file (#{config_file}) does not exist", WARNING
           return false
         end
 
         File.delete config_file
-        puts "Configuration file (#{config_file}) deleted".green
+        say "Configuration file (#{config_file}) deleted", SUCCESS
 
         true
+      end
+
+      def print_config_file(config_file)
+        hash = YAML.load(File.open(config_file))
+        say hash.to_yaml.gsub("\n-", "\n\n-"), SUCCESS
       end
     end
   end

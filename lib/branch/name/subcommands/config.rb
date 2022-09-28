@@ -26,17 +26,9 @@ module Branch
           branch-name config info
         LONG_DESC
         def info
-          if global_config_file?
-            say "Global config file exists: \"#{global_config_file}\"", :green
-          else
-            say "Global config file does not exist at: \"#{global_folder}\"", :yellow
-          end
-
-          if local_config_file?
-            say "Local config file exists: \"#{local_config_file}\"", :green
-          else
-            say "Local config file does not exist at: \"#{local_folder}\"", :yellow
-          end
+          print_global_config_file
+          say ''
+          print_local_config_file
         end
 
         desc 'init SUBCOMMAND', 'Sets up config files for this gem'

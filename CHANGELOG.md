@@ -1,3 +1,7 @@
+## ['3.3.0'] - 2022-09-27
+* Enhancements:
+  * `branch-name config info` now displays the contents of both the Global and the local config files.
+
 ## ['3.2.2'] - 2022-09-27
 * Changes:
   * Refactor code that patches Thor incorrect display of nested commands (subcommangs).
