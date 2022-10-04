@@ -1,3 +1,7 @@
+## ['3.5.0'] - 2022-10-04
+* Changes
+  * Fix broken link to CHANGELOG.md in .gemspec file.
+
 ## ['3.4.0'] - 2022-10-04
 * Changes
   * `branch-name create` when creating projects prompts to confirm creating of projects by clicking 'y'. This change was prompted because projects were being created when users were attempting to display help for `branch-name create`; for example, users were incorrectly attempting to display help using `branch-name create help`, when, infact, `branch-name help create` should have been entered. Incorrectly executing `branch-name create help` would create a project with the name "help". Prompting the user to verify project creation solves this problem.
