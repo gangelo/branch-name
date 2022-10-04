@@ -25,7 +25,10 @@ module Branch
         yield e
       end
 
-      def project_folder_from(normalized_branch_name)
+      # Returns a project folder name from a normalized branch name.
+      # The location of the folder is not included; that is, the
+      # folder returned is not fully qualified.
+      def project_folder_name_from(normalized_branch_name)
         normalize_token normalized_branch_name, PROJECT_FOLDER_REGEX
       rescue Branch::Name::OptionError => e
         raise unless block_given?

@@ -90,7 +90,7 @@ module Branch
 
       def create(ticket_description, ticket = nil)
         if ticket_description.blank?
-          say_error 'description is required', :red
+          say_error 'description is required', ERROR
           exit 1
         end
 
@@ -100,18 +100,24 @@ module Branch
           say_error error.message
           exit 1
         end
-        say "Branch name: #{branch_name}", :cyan
+        say "Branch name: \"#{branch_name}\"", :cyan
+        say "Branch name \"#{branch_name}\" has been copied to the clipboard!", SUCCESS if copy_to_clipboard branch_name
 
         if options[:project]
-          project_folder = project_folder_from(branch_name) do |error|
+          project_folder_name = project_folder_name_from(branch_name) do |error|
             say_error error.message
             exit 1
           end
-          say "Project folder name: #{project_folder}", :cyan
-          create_project!(project_folder)
-        end
+          project_folder = project_folder_for branch_name
+          unless yes? "Create project for branch \"#{branch_name}\" " \
+                      "in folder \"#{project_folder}\" (y/n)?", :cyan
+            say 'Aborted.', ABORTED
+            return
+          end
 
-        say "Branch name \"#{branch_name}\" has been copied to the clipboard!", :green if copy_to_clipboard branch_name
+          say "Project folder name: \"#{project_folder_name}\"", :cyan
+          create_project!(project_folder_name)
+        end
       end
 
       desc 'config SUBCOMMAND', 'Manages config files for this gem'
