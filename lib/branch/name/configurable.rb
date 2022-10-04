@@ -47,10 +47,12 @@ module Branch
 
       def create_global_config_file!
         create_config_file global_config_file
+        print_global_config_file
       end
 
       def create_local_config_file!
         create_config_file local_config_file
+        print_local_config_file
       end
 
       def delete_global_config_file!
@@ -96,7 +98,7 @@ module Branch
         end
 
         File.write(config_file, DEFAULT_BRANCH_NAME_OPTIONS.to_yaml)
-        say "Configuration file (#{config_file}) created", SUCCESS
+        say "Configuration file (#{config_file}) created.", SUCCESS
 
         true
       end
@@ -114,7 +116,7 @@ module Branch
       end
 
       def print_config_file(config_file)
-        hash = YAML.load(File.open(config_file))
+        hash = YAML.safe_load(File.open(config_file))
         say hash.to_yaml.gsub("\n-", "\n\n-"), SUCCESS
       end
     end
