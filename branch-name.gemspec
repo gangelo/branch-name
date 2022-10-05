@@ -9,7 +9,13 @@ Gem::Specification.new do |spec|
   spec.email        = ['public.gma@gmail.com']
 
   spec.summary      = 'Generates a branch name based on a JIRA ticket/ticket number.'
-  spec.description  = 'Generates a branch name based on a JIRA ticket/ticket number.'
+  spec.description  = <<-EOF
+  branch-name is a gem that provides a command-line interface that allows you to accomplish several tasks, tasks I personally find myself having to carry out every time I work on a feature branch. I created this gem for myself; however, you are free to use it yourself, if any of these tasks fits into your personal routine:
+
+  1. Formulate a git feature branch name, given a jira ticket and jira ticket description. Why? Because I am constantly having to create git feature branch names that are based on jira ticket and jira ticket descriptions.
+  2. Optionally create a "project" based on the branch name (formulated in step 1 above). Why? Because I'm constantly having to create folders to manage files associated with the feature branches I am working on.
+  3. Optionally use and manage default options that determine the git feature branch name formulated, project greated, and default files associated with the project.Why? Because I routinely have to create files to support the feature I am working on and associate them with the feature I am working on. For example: scratch.rb to hold scratch code, snippets.rb to hold code to execute to perform redundant tasks, and readme.txt files to document things I need to remember.
+  EOF
   spec.homepage     = 'https://github.com/gangelo/branch-name'
   spec.license      = 'MIT'
 
