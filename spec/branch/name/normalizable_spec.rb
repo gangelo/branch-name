@@ -20,7 +20,7 @@ RSpec.shared_examples 'the format_string (-x) is invalid' do
 end
 
 PROJECT_FOLDER_TOKEN_SEPARATORS = Branch::Name::Normalizable::PROJECT_FOLDER_TOKEN_SEPARATORS
-DEFAULT_PROJECT_FOLDER_TOKEN_SEPARATOR =  Branch::Name::Normalizable::DEFAULT_PROJECT_FOLDER_TOKEN_SEPARATOR
+DEFAULT_PROJECT_FOLDER_TOKEN_SEPARATOR = Branch::Name::Normalizable::DEFAULT_PROJECT_FOLDER_TOKEN_SEPARATOR
 
 RSpec.describe Branch::Name::Normalizable, type: :module do
   subject(:normalized_branch_name) do
@@ -156,7 +156,7 @@ RSpec.describe Branch::Name::Normalizable, type: :module do
     it do
       # Sanity check; make sure we account for all separators in our
       # below tests.
-      expect(PROJECT_FOLDER_TOKEN_SEPARATORS).to eq %W[- _]
+      expect(PROJECT_FOLDER_TOKEN_SEPARATORS).to eq %w[- _]
     end
 
     context 'when the separator (-s) is included in Normalizable::PROJECT_FOLDER_TOKEN_SEPARATORS' do

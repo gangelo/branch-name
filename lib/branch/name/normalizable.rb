@@ -16,7 +16,7 @@ module Branch
       # Acceptable project folder token separators. If options[:separator]
       # returns one of these acceptable values, it will be used; otherwise
       # DEFAULT_PROJECT_FOLDER_TOKEN_SEPARATOR will be used.
-      PROJECT_FOLDER_TOKEN_SEPARATORS = %W[- _]
+      PROJECT_FOLDER_TOKEN_SEPARATORS = %w[- _].freeze
 
       # The default project folder token separator if options[:separator] is
       # not an acceptable project folder token separator

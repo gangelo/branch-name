@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.shared_examples 'it formats the folder name properly' do
   it 'formats the folder name properly' do
     actual_folder_name = subject.project_folder_for branch_name

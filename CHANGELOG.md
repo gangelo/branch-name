@@ -1,3 +1,8 @@
+## ['3.6.0'] - 2022-10-06
+* Changes
+  * Added a `-i` (interactive) option to `branch-name create`. When used in conjunction with the `-p` option (project creation), if the `-i` option is used, the user will be prompted to create the project. If the `-i` option is NOT used, the user will NOT be prompted when creating the project.
+  * Update the README.md file accordign to the aforementioned.
+
 ## ['3.5.1'] - 2022-10-05
 * Bug Fixes
   * Fix bug that failed to remove underscore (_) characters in ticket and ticket descriptions from folder and branch name formulation.
