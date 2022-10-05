@@ -1,3 +1,12 @@
+## ['3.5.1'] - 2022-10-05
+* Bug Fixes
+  * Fix bug that failed to remove underscore (_) characters in ticket and ticket descriptions from folder and branch name formulation.
+  * Fix bug that allowed unacceptable project folder token separators in the project folder name (-p option). The rule is now: for `branch-name create`, if the `options[:separator]` option (-s) is included in `Branch::Name::Normalizable::PROJECT_FOLDER_TOKEN_SEPARATORS`, `options[:separator]` (-s) will be used as the project folder token separator; otherwise, `Branch::Name::Normalizable::DEFAULT_PROJECT_FOLDER_TOKEN_SEPARATOR` will be used.
+* Changes
+  * Add test coverage for the above scenarios.
+  * Use File.join to join paths and files safely where appropriate.
+  * Update .gemspec gem description with more detail.
+
 ## ['3.5.0'] - 2022-10-04
 * Changes
   * Fix broken link to CHANGELOG.md in .gemspec file.

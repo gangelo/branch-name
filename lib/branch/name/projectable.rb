@@ -2,11 +2,13 @@
 
 require 'fileutils'
 require_relative 'locatable'
+require_relative 'normalizable'
 
 module Branch
   module Name
     module Projectable
       include Locatable
+      include Normalizable
 
       def create_project!(branch_name)
         raise 'options[:project] is false' unless options[:project]
@@ -52,8 +54,9 @@ module Branch
       end
 
       def project_folder_for(branch_name)
+        branch_name = project_folder_name_from branch_name
         project_location = Time.new.strftime(options[:project_location])
-        "#{project_location}/#{branch_name}"
+        File.join(project_location, branch_name)
       end
     end
   end
