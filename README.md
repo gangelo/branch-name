@@ -76,7 +76,7 @@ NOTE: You can manually change any of the options you wish. It is recommended tha
 
 The `create: project_location` option string also accepts any [`Time.strftime`](`https://apidock.com/ruby/Time/strftime`) format directives.
 
-The `create: format_string` option string can be used to position the *ticket* (`%t`) and *ticket description* (`%d`) within the branch name formulated. You can also include any other information you wish in the format string, for example: "`<username> %t %d`". However, non-word characters will be stripped (see `Branch::Name::Normalizable::NON_WORD_CHARS_REGEX` which equates to `/[\W_]/`)
+The `create: format_string` option string can be used to position the *ticket* (`%t`) and *ticket description* (`%d`) within the branch name formulated. You can also include any other information you wish in the format string, for example: "`<username> %t %d`". However, particular characters will be stripped to formulate the branch name (see `Branch::Name::Normalizable::BRANCH_NAME_REGEX` which equates to `%r{[^/\w\x20]|_}`).
 
 Any or all of these options can also be overwritten on the command-line. For more information:
 `$ branch-name config help init`
@@ -100,13 +100,16 @@ create:
   - readme.txt
   - scratch.rb
   - snippets.rb
+  interactive: true
   ```
 
-This example formulates feature a branch named *lg-12345-pay-down-tech-debt-on-user-model* by converting the ticket and ticket description to lowercase (`-d`) and delimiting the feature branch name tokens with a "-" character (`-s -`). The `-p` option instructs `branch-name create` to create the project folder */Users/<username>/feature-branches/2022/lg-12345-pay-down-tech-debt-on-user-model*. The aforementioned project folder will also contain the following files: readme.txt, scratch.rb and snippets.rb. In addition to this, `branch-name create` will also copy the feature brach name to the clipboard for you (macOS and Windows currently supported). This is convenient when you need to create a feature branch in github, or from the command-line.
+This example formulates feature a branch named *lg-12345-pay-down-tech-debt-on-user-model* by converting the ticket and ticket description to lowercase (`-d`) and delimiting the feature branch name tokens with a "-" character (`-s -`). The `-p` option instructs `branch-name create` to create the project folder */Users/<username>/feature-branches/2022/lg-12345-pay-down-tech-debt-on-user-model*, and finally, the `-i false` option instructs `branch-name` to *not* prompt the user when creating projects. The aforementioned project folder will also contain the following files: readme.txt, scratch.rb and snippets.rb. In addition to this, `branch-name create` will also copy the feature brach name to the clipboard for you (macOS and Windows currently supported). This is convenient when you need to create a feature branch in github, or from the command-line.
 
 ```shell
-$ branch-name create -p -d -s - "Pay down tech debt on User model" LG-12345
+$ branch-name create -i false -p -d -s - "Pay down tech debt on User model" LG-12345
 ```
+
+NOTE: When creating projects, `branch-name` will prompt you if the `interactive` option is true (`-i`).
 
 This example simply formulates feature a branch named *Add_create_and_destroy_session_controller_actions* and copies it to the clipboard.
 
@@ -133,7 +136,7 @@ $ branch-name create "<username>/UX-54321 Remove debug code"
 ...
 ```
 
-NOTE: Project folders created (`--project/-p`) will replace any forward-slash with the `create: :separator` option value.
+NOTE: Project folders that are formulated (`branch-name create [-p|--project] ...`), will have any tokens comprising the project folder name delimited according to the following rules: if the `options[:separator]` option (-s) is included in `Branch::Name::Normalizable::PROJECT_FOLDER_TOKEN_SEPARATORS`, `options[:separator]` (-s) will be used as the project folder token delimiter; otherwise, `Branch::Name::Normalizable::DEFAULT_PROJECT_FOLDER_TOKEN_SEPARATOR` will be used.
 
 ## Development
 
