@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
 require 'thor'
+require 'thor_nested_subcommand'
 require_relative '../configurable'
 require_relative '../exitable'
-require_relative 'nestable'
 require_relative '../task_defaultable'
 
 module Branch
@@ -12,7 +12,7 @@ module Branch
       class Init < ::Thor
         include Configurable
         include Exitable
-        include Nestable
+        include ThorNestedSubcommand
         include TaskDefaultable
 
         class << self

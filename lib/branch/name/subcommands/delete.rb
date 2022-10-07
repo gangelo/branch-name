@@ -3,7 +3,7 @@
 require 'thor'
 require_relative '../configurable'
 require_relative '../exitable'
-require_relative 'nestable'
+require_relative 'thor_nested_subcommand'
 require_relative '../task_defaultable'
 
 module Branch
@@ -12,7 +12,7 @@ module Branch
       class Delete < ::Thor
         include Configurable
         include Exitable
-        include Nestable
+        include ThorNestedSubcommand
         include TaskDefaultable
 
         class << self

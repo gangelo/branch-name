@@ -42,6 +42,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency 'colorize', '~> 0.8.1'
   spec.add_dependency 'os', '~> 1.1', '>= 1.1.4'
   spec.add_dependency 'thor', '~> 1.2', '>= 1.2.1'
+  spec.add_dependency 'thor_nested_subcommand', '~> 1.0'
 
   # Remove this for now.
   spec.metadata['rubygems_mfa_required'] = 'true'
