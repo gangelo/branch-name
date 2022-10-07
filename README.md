@@ -70,6 +70,7 @@ create:
   - readme.txt
   - scratch.rb
   - snippets.rb
+  interactive: true
   ```
 
 NOTE: You can manually change any of the options you wish. It is recommended that you change the default `create: project_location` to meet your needs, depending on your *os*. For example, on *macOS* you might want to change this to `"/Users/<username>/Documents"`, `"/Users/<username>/Documents/features"`, or something similar.
