@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
 require 'thor'
+require 'thor_nested_subcommand'
 require_relative '../configurable'
 require_relative '../exitable'
-require_relative 'thor_nested_subcommand'
 require_relative '../task_defaultable'
 
 module Branch
@@ -12,8 +12,8 @@ module Branch
       class Delete < ::Thor
         include Configurable
         include Exitable
-        include ThorNestedSubcommand
         include TaskDefaultable
+        include ThorNestedSubcommand
 
         class << self
           def base_usage

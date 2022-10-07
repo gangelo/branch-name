@@ -12,8 +12,8 @@ module Branch
       class Init < ::Thor
         include Configurable
         include Exitable
-        include ThorNestedSubcommand
         include TaskDefaultable
+        include ThorNestedSubcommand
 
         class << self
           def base_usage

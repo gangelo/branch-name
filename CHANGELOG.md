@@ -1,3 +1,8 @@
+## ['3.7.0'] - 2022-10-06
+* Changes
+  * Use thor_nested_subcommand to fix Thor nested subcommand help bug.
+  * Add missing global config option for create: :interactive.
+
 ## ['3.6.0'] - 2022-10-06
 * Changes
   * Added a `-i` (interactive) option to `branch-name create`. When used in conjunction with the `-p` option (project creation), if the `-i` option is used, the user will be prompted to create the project. If the `-i` option is NOT used, the user will NOT be prompted when creating the project.
