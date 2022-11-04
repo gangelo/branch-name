@@ -1,3 +1,7 @@
+## ['3.9.0'] - 2022-11-04
+* Changes
+  * Update gems.
+
 ## ['3.8.0'] - 2022-11-04
 * Changes
   * Limit gem version to ~> 3.0 to avoid breaking changes.
