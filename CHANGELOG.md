@@ -1,3 +1,7 @@
+## ['3.8.0'] - 2022-11-04
+* Changes
+  * Limit gem version to ~> 3.0 to avoid breaking changes.
+
 ## ['3.7.0'] - 2022-10-06
 * Changes
   * Use thor_nested_subcommand to fix Thor nested subcommand help bug.

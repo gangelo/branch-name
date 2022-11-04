@@ -19,7 +19,7 @@ Gem::Specification.new do |spec|
   spec.homepage     = 'https://github.com/gangelo/branch-name'
   spec.license      = 'MIT'
 
-  spec.required_ruby_version = '>= 3.0.1'
+  spec.required_ruby_version = Gem::Requirement.new("~> 3.0")
 
   # spec.metadata["allowed_push_host"] = "TODO: Set to your gem server 'https://example.com'"
 
