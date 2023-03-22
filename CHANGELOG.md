@@ -1,3 +1,7 @@
+## ['3.10.1'] - 2023-03-22
+* Changes
+  * Update gems. Remedy an activesupport dependabot alert.
+
 ## ['3.10.0'] - 2023-02-16
 * Changes
   * Update gems.
