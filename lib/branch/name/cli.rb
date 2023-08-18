@@ -38,52 +38,51 @@ module Branch
         description and optional ticket'
       long_desc <<-LONG_DESC
         NAME
-        \x5
+
         `branch-name create` -- will formulate a Git branch name based on the
         DESCRIPTION and optional TICKET provided.
 
         SYNOPSIS
-        \x5
+
         branch-name create [-i|-l|-f|-d|-s|-p|-x] DESCRIPTION [TICKET]
 
-        \x5
         The following options are available:
 
-        \x5 NOTE: Default option values will be overidden if .branch-name config files
+         NOTE: Default option values will be overidden if .branch-name config files
           are present. Run `branch-name config info` to determine what config files
           are present.
 
-        \x5 -d: Forces the branch name to lower case.
+         -d: Forces the branch name to lower case.
           The default is: #{DEFAULT_BRANCH_NAME_OPTIONS['create']['downcase']}.
 
-        \x5 -f: Used with the -p option. If -f is specified, project files
+         -f: Used with the -p option. If -f is specified, project files
           will be created in the PROJECT_LOCATION specified by the -l option.
           The default is: #{DEFAULT_BRANCH_NAME_OPTIONS['create']['project_files']}.
 
-        \x5 -i: Interactive. Used with the -p option. If -i is specified, you will
+         -i: Interactive. Used with the -p option. If -i is specified, you will
           be prompted when creating project folders. If -i is not specified, you will
           NOT be prompted when creating project folders.
 
-        \x5\x5 -l PROJECT_LOCATION: Indicates where the project should be created.
+         -l PROJECT_LOCATION: Indicates where the project should be created.
           A "project" is a folder that is created in the PROJECT_LOCATION specified,
           whose name is equivalent to the branch name that is formulated.
           The default is: "#{Locatable.project_folder(options: options)}".
 
-        \x5\x5 -p: Indicates that a project should be created.
+         -p: Indicates that a project should be created.
           The default is: #{DEFAULT_BRANCH_NAME_OPTIONS['create']['project']}.
 
-        \x5\x5 -s SEPARATOR: Indicates the SEPARATOR that will be used to delimit tokens in the branch name.
+         -s SEPARATOR: Indicates the SEPARATOR that will be used to delimit tokens in the branch name.
           The default SEPARATOR is: '#{DEFAULT_BRANCH_NAME_OPTIONS['create']['separator']}'.
 
-        \x5 -x FORMAT_STRING: This is a string that determines the format of the branch name
+         -x FORMAT_STRING: This is a string that determines the format of the branch name
           that is formulated. The following is a list of required placeholders you must put
           in your format string to format the branch name: [%t, %d].
-          \x5Where %t will be replaced by the ticket.
-          \x5Where %d will be replaced by the ticket description.
-          \x5The following is a list of optional placeholders you may put
+          Where %t will be replaced by the ticket.
+          Where %d will be replaced by the ticket description.
+          The following is a list of optional placeholders you may put
           in your format string to format the branch name: [%u].
-          \x5Where %u will be replaced with your username (`Etc.getlogin`, https://rubygems.org/gems/etc).
-          \x5The default format string is: "#{DEFAULT_BRANCH_NAME_OPTIONS['create']['format_string']}".
+          Where %u will be replaced with your username (`Etc.getlogin`, https://rubygems.org/gems/etc).
+          The default format string is: "#{DEFAULT_BRANCH_NAME_OPTIONS['create']['format_string']}".
       LONG_DESC
       method_option :downcase, type: :boolean, aliases: '-d'
       method_option :separator, type: :string, aliases: '-s'

@@ -18,11 +18,11 @@ module Branch
         desc 'info', 'Displays information about this gem configuration'
         long_desc <<-LONG_DESC
           NAME
-          \x5
+
           `branch-name config info` -- Displays information about this gem configuration.
 
           SYNOPSIS
-          \x5
+
           branch-name config info
         LONG_DESC
         def info
