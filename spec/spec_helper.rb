@@ -3,6 +3,9 @@
 require 'pry-byebug'
 require 'thor'
 
+require 'simplecov'
+SimpleCov.start
+
 require 'branch/name'
 require 'branch/name/clipable'
 require 'branch/name/configurable'
