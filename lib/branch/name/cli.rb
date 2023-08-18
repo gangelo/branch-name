@@ -93,25 +93,16 @@ module Branch
       method_option :interactive, type: :boolean, aliases: '-i'
 
       def create(ticket_description, ticket = nil)
-        if ticket_description.blank?
-          say_error 'description is required', ERROR
-          exit 1
-        end
+        validate_ticket_description! ticket_description
 
         init_options_for! command: :create
 
-        branch_name = normalize_branch_name(ticket_description, ticket) do |error|
-          say_error error.message
-          exit 1
-        end
+        branch_name = validate_and_normalize_branch_name(ticket_description, ticket)
         say "Branch name: \"#{branch_name}\"", :cyan
         say "Branch name \"#{branch_name}\" has been copied to the clipboard!", SUCCESS if copy_to_clipboard branch_name
 
         if options[:project]
-          project_folder_name = project_folder_name_from(branch_name) do |error|
-            say_error error.message
-            exit 1
-          end
+          project_folder_name = validate_and_create_project_folder_name_from! branch_name
           if options[:interactive]
             project_folder = project_folder_for branch_name
             unless yes? "Create project for branch \"#{branch_name}\" " \
@@ -135,6 +126,27 @@ module Branch
       end
 
       private
+
+      def validate_ticket_description!(ticket_description)
+        return unless ticket_description.blank?
+
+        say_error 'description is required', ERROR
+        exit 1
+      end
+
+      def validate_and_normalize_branch_name(ticket_description, ticket)
+        normalize_branch_name(ticket_description, ticket) do |error|
+          say_error error.message
+          exit 1
+        end
+      end
+
+      def validate_and_create_project_folder_name_from!(branch_name)
+        project_folder_name_from(branch_name) do |error|
+          say_error error.message
+          exit 1
+        end
+      end
 
       def init_options_for!(command:)
         say "Options before config file merge: #{options}" if options[:debug]
