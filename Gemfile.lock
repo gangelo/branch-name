@@ -78,6 +78,17 @@ GEM
       unicode-display_width (>= 2.4.0, < 3.0)
     rubocop-ast (1.29.0)
       parser (>= 3.2.1.0)
+    rubocop-capybara (2.18.0)
+      rubocop (~> 1.41)
+    rubocop-factory_bot (2.23.1)
+      rubocop (~> 1.33)
+    rubocop-performance (1.19.0)
+      rubocop (>= 1.7.0, < 2.0)
+      rubocop-ast (>= 0.4.0)
+    rubocop-rspec (2.23.2)
+      rubocop (~> 1.33)
+      rubocop-capybara (~> 2.17)
+      rubocop-factory_bot (~> 2.22)
     ruby-progressbar (1.13.0)
     simplecov (0.22.0)
       docile (~> 1.1)
@@ -98,11 +109,13 @@ PLATFORMS
 
 DEPENDENCIES
   branch-name!
-  pry-byebug (~> 3.9)
-  rake (~> 13.0)
-  reek (~> 6.1, >= 6.1.1)
-  rspec (~> 3.0)
+  pry-byebug (~> 3.10, >= 3.10.1)
+  rake (~> 13.0, >= 13.0.6)
+  reek (~> 6.1, >= 6.1.4)
+  rspec (~> 3.12)
   rubocop (~> 1.56.0)
+  rubocop-performance (~> 1.19)
+  rubocop-rspec (~> 2.23, >= 2.23.2)
   simplecov (~> 0.22.0)
 
 BUNDLED WITH
