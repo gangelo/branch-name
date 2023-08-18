@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    branch-name (3.10.2)
+    branch-name (3.10.3)
       activesupport (~> 7.0, >= 7.0.4)
       colorize (>= 0.8.1, < 1.2.0)
       os (~> 1.1, >= 1.1.4)
