@@ -6,6 +6,10 @@ require 'thor'
 require 'simplecov'
 SimpleCov.start
 
+SimpleCov.start do
+  add_filter 'spec'
+end
+
 require 'branch/name'
 require 'branch/name/cli'
 require 'branch/name/clipable'
@@ -29,4 +33,6 @@ RSpec.configure do |config|
   config.expect_with :rspec do |c|
     c.syntax = :expect
   end
+
+  config.include ConfigFileHelpers
 end
