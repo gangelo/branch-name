@@ -28,6 +28,13 @@ module Branch
         def info
           print_global_config_file
           say ''
+
+          if global_folder?
+            say 'NOTE: You are in your global folder. ' \
+                'Local and global configurations are the same.'.colorize(:yellow)
+            return
+          end
+
           print_local_config_file
         end
 
