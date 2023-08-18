@@ -2,8 +2,7 @@
 
 RSpec.describe Branch::Name::Clipable, type: :module do
   before do
-    allow(OS).to receive(:mac?).and_return false
-    allow(OS).to receive(:windows?).and_return false
+    allow(OS).to receive_messages(mac?: false, windows?: false)
   end
 
   describe '.copy_to_clipboard' do
