@@ -19,6 +19,11 @@ module Branch
         Dir.pwd
       end
 
+      # Is the current folder we're in the same as the global folder?
+      def global_folder?
+        global_folder == local_folder
+      end
+
       def project_folder(options: {})
         return home_folder if options.blank?
 
