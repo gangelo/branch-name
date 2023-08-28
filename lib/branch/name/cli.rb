@@ -100,7 +100,10 @@ module Branch
         branch_name = validate_and_normalize_branch_name(ticket_description, ticket)
         say "Branch name: \"#{branch_name}\"", :cyan
         say "Branch name \"#{branch_name}\" has been copied to the clipboard!", SUCCESS if copy_to_clipboard branch_name
-        say 'Ignored: -i is only used with projects (-p).', WARNING if original_options[:interactive] && !options[:project]
+        if original_options[:interactive] && !options[:project]
+          say 'Ignored: -i is only used with projects (-p).',
+            WARNING
+        end
         interactive_default = options['interactive']
         options[:interactive] = interactive_default if original_options[:interactive].nil?
 
