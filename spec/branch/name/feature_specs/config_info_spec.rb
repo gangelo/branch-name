@@ -3,12 +3,6 @@
 RSpec.describe 'branch-name config info', type: :feature do
   subject(:cli) { Branch::Name::CLI.start(%w[config info]) }
 
-  shared_examples 'the correct output is displayed to stdout' do
-    it 'displays the correct output' do
-      expect { cli }.to output(/#{expected_output}/).to_stdout
-    end
-  end
-
   context 'global config file' do
     context 'when the file exists' do
       before do

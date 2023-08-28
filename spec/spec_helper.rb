@@ -10,17 +10,7 @@ SimpleCov.start do
   add_filter 'spec'
 end
 
-require 'branch/name'
 require 'branch/name/cli'
-require 'branch/name/clipable'
-require 'branch/name/configurable'
-require 'branch/name/exitable'
-require 'branch/name/loadable'
-require 'branch/name/locatable'
-require 'branch/name/normalizable'
-require 'branch/name/projectable'
-require 'branch/name/version'
-
 Dir[File.join(Dir.pwd, 'spec/support/**/*.rb')].each { |f| require f }
 
 RSpec.configure do |config|

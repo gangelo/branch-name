@@ -28,14 +28,12 @@ module Branch
       }.freeze
       # rubocop:enable Style/StringHashKeys
 
-      module_function
-
       def global_config_file
-        File.join(global_folder, CONFIG_FILENAME)
+        File.join(Locatable.global_folder, CONFIG_FILENAME)
       end
 
       def local_config_file
-        File.join(local_folder, CONFIG_FILENAME)
+        File.join(Locatable.local_folder, CONFIG_FILENAME)
       end
 
       def global_config_file?
@@ -47,12 +45,16 @@ module Branch
       end
 
       def create_global_config_file!
-        create_config_file global_config_file
+        create_options = DEFAULT_BRANCH_NAME_OPTIONS
+        yield create_options if block_given?
+        create_config_file global_config_file, create_options: create_options
         print_global_config_file
       end
 
       def create_local_config_file!
-        create_config_file local_config_file
+        create_options = DEFAULT_BRANCH_NAME_OPTIONS
+        yield create_options if block_given?
+        create_config_file local_config_file, create_options: create_options
         print_local_config_file
       end
 
@@ -84,9 +86,7 @@ module Branch
         end
       end
 
-      private
-
-      def create_config_file(config_file)
+      def create_config_file(config_file, create_options:)
         folder = File.dirname(config_file)
         unless Dir.exist?(folder)
           say "Destination folder for configuration file (#{folder}) does not exist", ERROR
@@ -98,11 +98,13 @@ module Branch
           return false
         end
 
-        File.write(config_file, DEFAULT_BRANCH_NAME_OPTIONS.to_yaml)
+        File.write(config_file, create_options.to_yaml)
         say "Configuration file (#{config_file}) created.", SUCCESS
 
         true
       end
+
+      private
 
       def delete_config_file(config_file)
         unless File.exist?(config_file)

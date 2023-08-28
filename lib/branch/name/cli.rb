@@ -59,7 +59,7 @@ module Branch
           will be created in the PROJECT_LOCATION specified by the -l option.
           The default is: #{DEFAULT_BRANCH_NAME_OPTIONS['create']['project_files']}.
 
-         -i: Interactive. Used with the -p option. If -i is specified, you will
+         -i: Interactive. Used only with the -p option. If -i is specified, you will
           be prompted when creating project folders. If -i is not specified, you will
           NOT be prompted when creating project folders.
 
@@ -90,16 +90,19 @@ module Branch
       method_option :project, type: :boolean, aliases: '-p'
       method_option :project_location, type: :string, aliases: '-l'
       method_option :project_files, type: :array, aliases: '-f'
-      method_option :interactive, type: :boolean, aliases: '-i'
+      method_option :interactive, type: :boolean, optional: true, aliases: '-i'
 
       def create(ticket_description, ticket = nil)
         validate_ticket_description! ticket_description
-
-        init_options_for! command: :create
+        original_options, altered_options = init_options_for! command: :create
+        self.options = altered_options
 
         branch_name = validate_and_normalize_branch_name(ticket_description, ticket)
         say "Branch name: \"#{branch_name}\"", :cyan
         say "Branch name \"#{branch_name}\" has been copied to the clipboard!", SUCCESS if copy_to_clipboard branch_name
+        say 'Ignored: -i is only used with projects (-p).', WARNING if original_options[:interactive] && !options[:project]
+        interactive_default = options['interactive']
+        options[:interactive] = interactive_default if original_options[:interactive].nil?
 
         if options[:project]
           project_folder_name = validate_and_create_project_folder_name_from! branch_name
@@ -149,14 +152,20 @@ module Branch
       end
 
       def init_options_for!(command:)
+        options_array = []
+        options_array << options.dup
+
         say "Options before config file merge: #{options}" if options[:debug]
 
-        load_options = load_options(defaults: DEFAULT_BRANCH_NAME_OPTIONS)[command.to_s] || {}
-        say "No options loaded from config file(s): #{load_options}" if options[:debug] && load_options.blank?
-        say "Options loaded from config file(s): #{load_options}" if options[:debug]
+        (load_options(defaults: DEFAULT_BRANCH_NAME_OPTIONS)[command.to_s] || {}).tap do |load_options|
+          say "No options loaded from config file(s): #{load_options}" if options[:debug] && load_options.blank?
+          say "Options loaded from config file(s): #{load_options}" if options[:debug]
 
-        self.options = Thor::CoreExt::HashWithIndifferentAccess.new(load_options.merge(options))
-        say "Options after config file merge: #{options}" if options[:debug]
+          options_array << Thor::CoreExt::HashWithIndifferentAccess.new(load_options.merge(options))
+          say "Options after config file merge: #{options_array.last}" if options_array.last[:debug]
+        end
+
+        options_array
       end
     end
   end
