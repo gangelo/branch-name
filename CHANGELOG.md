@@ -3,6 +3,8 @@
 Changes
 
 - Update gems.
+- Various code refactors.
+- Add some more test coverage.
 
 ## ['3.10.2'] - 2023-08-17
 
