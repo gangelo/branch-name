@@ -24,12 +24,12 @@ module Branch
         desc 'global', 'Creates and initializes a .branch-name file in the global folder'
         long_desc <<-LONG_DESC
           NAME
-          \x5
+
           `branch-name config init global` -- will create and initialize a .branch-name file
           in the "#{Locatable.global_folder}" folder.
 
           SYNOPSIS
-          \x5
+
           branch-name config init global
         LONG_DESC
         def global
@@ -39,12 +39,12 @@ module Branch
         desc 'local', 'Creates and initializes a .branch-name file in the local folder'
         long_desc <<-LONG_DESC
           NAME
-          \x5
+
           `branch-name config init local` -- will create and initialize a .branch-name file
           in the "#{Locatable.local_folder}" folder.
 
           SYNOPSIS
-          \x5
+
           branch-name config init local
         LONG_DESC
         def local
