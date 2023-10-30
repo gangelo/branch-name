@@ -6,7 +6,7 @@ source 'https://rubygems.org'
 gemspec
 
 gem 'pry-byebug', '~> 3.10', '>= 3.10.1'
-gem 'rake', '~> 13.0', '>= 13.0.6'
+gem 'rake', '~> 13.1'
 gem 'reek', '~> 6.1', '>= 6.1.4'
 gem 'rspec', '~> 3.12'
 gem 'rubocop', '~> 1.56.0'
