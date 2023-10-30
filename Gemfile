@@ -6,10 +6,10 @@ source 'https://rubygems.org'
 gemspec
 
 gem 'pry-byebug', '~> 3.10', '>= 3.10.1'
-gem 'rake', '~> 13.0', '>= 13.0.6'
+gem 'rake', '~> 13.1'
 gem 'reek', '~> 6.1', '>= 6.1.4'
 gem 'rspec', '~> 3.12'
-gem 'rubocop', '~> 1.56.0'
+gem 'rubocop', '~> 1.57.2'
 gem 'rubocop-performance', '~> 1.19'
-gem 'rubocop-rspec', '~> 2.23', '>= 2.23.2'
+gem 'rubocop-rspec', '~> 2.25'
 gem 'simplecov', '~> 0.22.0'
