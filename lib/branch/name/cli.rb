@@ -11,6 +11,7 @@ require_relative 'loadable'
 require_relative 'locatable'
 require_relative 'normalizable'
 require_relative 'projectable'
+require_relative 'services/branch_name_service'
 require_relative 'subcommands/config'
 require_relative 'task_defaultable'
 require_relative 'version'
@@ -25,9 +26,15 @@ module Branch
       include Exitable
       include Loadable
       include Locatable
-      include Normalizable
+      #include Normalizable
       include Projectable
       include TaskDefaultable
+
+      class << self
+        def exit_on_failure?
+          true
+        end
+      end
 
       class_option :debug, type: :boolean, default: false
       class_option :verbose, type: :boolean, default: false
@@ -93,11 +100,13 @@ module Branch
       method_option :interactive, type: :boolean, optional: true, aliases: '-i'
 
       def create(ticket_description, ticket = nil)
-        validate_ticket_description! ticket_description
+        #validate_ticket_description! ticket_description
         original_options, altered_options = init_options_for! command: :create
         self.options = altered_options
 
-        branch_name = validate_and_normalize_branch_name(ticket_description, ticket)
+        #branch_name = validate_and_normalize_branch_name(ticket_description, ticket)
+        branch_name = BranchNameService.new(description: ticket_description, ticket: ticket, options: options).call
+
         say "Branch name: \"#{branch_name}\"", :cyan
         say "Branch name \"#{branch_name}\" has been copied to the clipboard!", SUCCESS if copy_to_clipboard branch_name
         if original_options[:interactive] && !options[:project]
@@ -121,6 +130,9 @@ module Branch
           say "Project folder name: \"#{project_folder_name}\"", :cyan
           create_project!(project_folder_name)
         end
+      rescue ArgumentError => e
+        say_error e.message, ERROR
+        exit 1
       end
 
       desc 'config SUBCOMMAND', 'Manages config files for this gem'
@@ -133,19 +145,19 @@ module Branch
 
       private
 
-      def validate_ticket_description!(ticket_description)
-        return unless ticket_description.blank?
+      # def validate_ticket_description!(ticket_description)
+      #   return unless ticket_description.blank?
 
-        say_error 'description is required', ERROR
-        exit 1
-      end
+      #   say_error 'description is required', ERROR
+      #   exit 1
+      # end
 
-      def validate_and_normalize_branch_name(ticket_description, ticket)
-        normalize_branch_name(ticket_description, ticket) do |error|
-          say_error error.message
-          exit 1
-        end
-      end
+      # def validate_and_normalize_branch_name(ticket_description, ticket)
+      #   normalize_branch_name(ticket_description, ticket) do |error|
+      #     say_error error.message
+      #     exit 1
+      #   end
+      # end
 
       def validate_and_create_project_folder_name_from!(branch_name)
         project_folder_name_from(branch_name) do |error|
