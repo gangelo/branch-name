@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require 'pry-byebug'
+require 'shoulda/matchers'
 require 'thor'
 
 require 'simplecov'
@@ -10,7 +11,13 @@ SimpleCov.start do
   add_filter 'spec'
 end
 
-require 'branch/name/cli'
+if File.exist?('.env.test')
+  # This loads our test environment when running tests.
+  require 'dotenv'
+  Dotenv.load('.env.test')
+end
+
+require 'branch/name'
 Dir[File.join(Dir.pwd, 'spec/support/**/*.rb')].each { |f| require f }
 
 RSpec.configure do |config|
@@ -25,4 +32,13 @@ RSpec.configure do |config|
   end
 
   config.include ConfigFileHelpers
+end
+
+Shoulda::Matchers.configure do |config|
+  config.integrate do |with|
+    with.test_framework :rspec
+
+    with.library :active_record
+    with.library :active_model
+  end
 end
