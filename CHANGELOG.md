@@ -1,3 +1,10 @@
+## ['3.10.5'] - 2023-11-03
+
+Changes
+
+- Various code refactors.
+- Update gems.
+
 ## ['3.10.4'] - 2023-11-01
 
 Changes
