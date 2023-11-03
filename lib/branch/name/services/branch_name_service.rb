@@ -19,6 +19,7 @@ module Branch
         validate_description!
         @branch_name = normalize_branch_name!
         validate_banch_name!
+        @branch_name
       end
 
       private
