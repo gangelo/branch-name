@@ -19,7 +19,7 @@ module Branch
           @ticket       = ticket
           @options      = options
 
-          super description: description, ticket: ticket
+          super(description: description, ticket: ticket)
         end
 
         def branch_name
