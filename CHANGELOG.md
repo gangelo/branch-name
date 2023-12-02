@@ -1,3 +1,9 @@
+## ['3.10.7'] - 2023-12-02
+
+Changes
+
+- Update gems (missed one in previous version).
+
 ## ['3.10.6'] - 2023-12-02
 
 Changes
