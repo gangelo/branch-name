@@ -7,7 +7,11 @@ RSpec.describe 'branch-name create', type: :feature do
 
   context 'when no config files exist' do
     let(:expected_output) do
-      /.Branch name "12345_foo_bar" has been copied to the clipboard.*/m
+      if OS.mac? || OS.windows?
+        /Branch name: "12345_foo_bar"\nBranch name "12345_foo_bar" has been copied to the clipboard!/
+      else
+        /Branch name: "12345_foo_bar"/
+      end
     end
 
     it 'uses the defaut configuration to format the branch name' do
@@ -24,7 +28,11 @@ RSpec.describe 'branch-name create', type: :feature do
       end
 
       let(:expected_output) do
-        /.Branch name "12345-foo-bar" has been copied to the clipboard.*/m
+        if OS.mac? || OS.windows?
+          /Branch name: "12345-foo-bar"\nBranch name "12345-foo-bar" has been copied to the clipboard!/
+        else
+          /Branch name: "12345-foo-bar"/
+        end
       end
 
       it 'uses the local configuration to format the branch name' do
@@ -43,7 +51,11 @@ RSpec.describe 'branch-name create', type: :feature do
       end
 
       let(:expected_output) do
-        /.Branch name "foo_bar_12345" has been copied to the clipboard.*/m
+        if OS.mac? || OS.windows?
+          /Branch name: "foo_bar_12345"\nBranch name "foo_bar_12345" has been copied to the clipboard!/
+        else
+          /Branch name: "foo_bar_12345"/
+        end
       end
 
       it 'uses the global configuration to format the branch name' do
@@ -64,7 +76,11 @@ RSpec.describe 'branch-name create', type: :feature do
       end
 
       let(:expected_output) do
-        /.Branch name "foo_bar_12345" has been copied to the clipboard.*/m
+        if OS.mac? || OS.windows?
+          /Branch name: "foo_bar_12345"\nBranch name "foo_bar_12345" has been copied to the clipboard!/
+        else
+          /Branch name: "foo_bar_12345"/
+        end
       end
 
       it 'uses the local config file to format the branch name' do
