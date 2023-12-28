@@ -1,14 +1,11 @@
 # `branch-name`
 
-[![GitHub version](http://badge.fury.io/gh/gangelo%2Fbranch-name.svg)](https://badge.fury.io/gh/gangelo%2Fbranch-name)
-
-[![Gem Version](https://badge.fury.io/rb/branch-name.svg)](https://badge.fury.io/rb/branch-name)
-
+[![Ruby](https://github.com/gangelo/branch-name/actions/workflows/ruby.yml/badge.svg)](https://github.com/gangelo/branch-name/actions/workflows/ruby.yml)
+[![GitHub version](http://badge.fury.io/gh/gangelo%2Fbranch-name.svg?refresh=1)](https://badge.fury.io/gh/gangelo%2Fbranch-name)
+[![Gem Version](https://badge.fury.io/rb/branch-name.svg?refresh=1)](https://badge.fury.io/rb/branch-name)
 [![](http://ruby-gem-downloads-badge.herokuapp.com/branch-name?type=total)](http://www.rubydoc.info/gems/branch-name/)
 [![Documentation](http://img.shields.io/badge/docs-rdoc.info-blue.svg)](http://www.rubydoc.info/gems/branch-name/)
-
 [![Report Issues](https://img.shields.io/badge/report-issues-red.svg)](https://github.com/gangelo/branch-name/issues)
-
 [![License](http://img.shields.io/badge/license-MIT-yellowgreen.svg)](#license)
 
 `branch-name` is a gem that provides a command-line interface that allows you to accomplish several tasks, tasks I *personally* find myself having to carry out every time I work on a feature branch. I created this gem *for myself*; however, you are free to use it yourself, if any of these tasks fits into your personal routine:

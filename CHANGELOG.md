@@ -1,3 +1,10 @@
+## ['3.10.8'] - 2023-12-27
+
+Changes
+
+- Update gems.
+- Update specs to work also on linux.
+
 ## ['3.10.7'] - 2023-12-02
 
 Changes
