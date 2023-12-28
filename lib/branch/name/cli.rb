@@ -98,7 +98,7 @@ module Branch
       method_option :project_files, type: :array, aliases: '-f'
       method_option :interactive, type: :boolean, optional: true, aliases: '-i'
 
-      def create(ticket_description, ticket = nil)
+      def create(ticket_description, ticket = nil) # rubocop:disable Metrics/MethodLength
         original_options, altered_options = init_options_for! command: :create
         self.options = altered_options
         branch_name = BranchNameService.new(description: ticket_description, ticket: ticket, options: options).call
