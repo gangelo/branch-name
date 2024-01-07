@@ -1,8 +1,8 @@
 # `branch-name`
 
 [![Ruby](https://github.com/gangelo/branch-name/actions/workflows/ruby.yml/badge.svg?refresh=1)](https://github.com/gangelo/branch-name/actions/workflows/ruby.yml)
-[![GitHub version](http://badge.fury.io/gh/gangelo%2Fbranch-name.svg?refresh=2)](https://badge.fury.io/gh/gangelo%2Fbranch-name)
-[![Gem Version](https://badge.fury.io/rb/branch-name.svg?refresh=2)](https://badge.fury.io/rb/branch-name)
+[![GitHub version](http://badge.fury.io/gh/gangelo%2Fbranch-name.svg?refresh=3)](https://badge.fury.io/gh/gangelo%2Fbranch-name)
+[![Gem Version](https://badge.fury.io/rb/branch-name.svg?refresh=3)](https://badge.fury.io/rb/branch-name)
 [![](http://ruby-gem-downloads-badge.herokuapp.com/branch-name?type=total)](http://www.rubydoc.info/gems/branch-name/)
 [![Documentation](http://img.shields.io/badge/docs-rdoc.info-blue.svg)](http://www.rubydoc.info/gems/branch-name/)
 [![Report Issues](https://img.shields.io/badge/report-issues-red.svg)](https://github.com/gangelo/branch-name/issues)
