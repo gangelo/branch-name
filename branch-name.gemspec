@@ -46,4 +46,35 @@ Gem::Specification.new do |spec|
 
   # Remove this for now.
   spec.metadata['rubygems_mfa_required'] = 'true'
+  spec.post_install_message = <<~POST_INSTALL
+    Thank you for installing branch-name!
+
+    Run `branch-name` from your command line to get started.
+
+    View the dsu README.md here: https://github.com/gangelo/branch-name
+    View the dsu CHANGELOG.md: https://github.com/gangelo/branch-name/blob/main/CHANGELOG.md
+
+                *
+               ***
+             *******
+            *********
+     ***********************
+        *****************
+          *************
+         ******* *******
+        *****       *****
+       ***             ***
+      **                 **
+
+    Using branch-name? branch-name is made available free of charge. Please consider giving branch-name a STAR on GitHub as well as sharing branch-name with your fellow developers on social media.
+
+    Knowing that branch-name is being used and appreciated is a great motivator to continue developing and improving branch-name.
+
+    >>> Star it on github: https://github.com/gangelo/branch-name
+    >>> Share on social media: https://rubygems.org/gems/branch-name
+
+    Thank you!
+
+    <3 Gene
+  POST_INSTALL
 end
