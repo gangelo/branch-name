@@ -1,3 +1,10 @@
+## ['4.0.0'] - 2024-01-16
+
+Changes
+
+- Update min ruby version to 3.0.6.
+- Update gems.
+
 ## ['3.10.10'] - 2024-01-16
 
 Changes
