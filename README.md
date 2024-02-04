@@ -116,9 +116,11 @@ $ branch-name create "Add #create and #destroy session controller actions"
 ```
 #### Creating a Branch Name that Contains Forward-Slashes (`/`)
 
-This can be accomplished in different ways; here are some examples:
+This can be accomplished in different ways; below are some examples,
 
-Embed the forward-slashes using the `--format-string/-x` option:
+##### Embed the forward-slashes using the configuration format-string option
+
+Specifically, the `--format-string/-x` option.
 
 ```shell
 $ branch-name create -x "%u/%t %d" "Remove debug code" UX-54321
@@ -126,12 +128,30 @@ $ branch-name create -x "%u/%t %d" "Remove debug code" UX-54321
 ...
 ```
 
-Embed the forward-slashes in the ticket description itself. Depending on *where* you want your forward-slashes to appear, you'll have to place them appropriately:
+##### Embed the forward-slashes in the ticket description itself
+
+Depending on *where* you want your forward-slashes to appear, you'll have to place them appropriately:
 
 ```shell
 $ branch-name create "<username>/UX-54321 Remove debug code"
 #=> Branch name: <username>/ux-54321-remove-debug-code
 ...
+```
+
+If you want a more **pernament solution**, you can [change the configuration `format_string` string](#creating-feature-branch-names-and-projects-examples) to include forward-slashes. 
+
+Below is an example using forward-slashes and username using the `%u` format specifier (assuming it coincides with your current username): `format_string: "%u/%t %d"`
+
+```shell
+$ branch-name create "Remove debug code" UX-54321
+#=> Branch name "<username>/ux-54321-remove-debug-code"
+```
+
+Lastly, you can, of course, embed a forward-slash or any other token and hard-code (for example) a username, just like any other token. The below is an example that would result if your configuration format_string looked like `format_string: "jsmith/%t %d"`.
+
+```shell
+$ branch-name create "Remove debug code" UX-54321
+#=> Branch name "jsmith/ux-54321-remove-debug-code"
 ```
 
 NOTE: Project folders that are formulated (`branch-name create [-p|--project] ...`), will have any tokens comprising the project folder name delimited according to the following rules: if the `options[:separator]` option (-s) is included in `Branch::Name::Normalizable::PROJECT_FOLDER_TOKEN_SEPARATORS`, `options[:separator]` (-s) will be used as the project folder token delimiter; otherwise, `Branch::Name::Normalizable::DEFAULT_PROJECT_FOLDER_TOKEN_SEPARATOR` will be used.
