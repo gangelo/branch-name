@@ -6,7 +6,7 @@ source 'https://rubygems.org'
 gemspec
 
 gem 'bundler', '~> 2.5', '>= 2.5.3'
-gem 'dotenv', '>= 2.8', '< 3.0'
+gem 'dotenv', '>= 2.8', '< 4.0'
 gem 'pry-byebug', '>= 3.10', '< 4.0'
 gem 'rake', '>= 13.0', '< 14'
 gem 'reek', '>= 6.1', '< 7.0'
