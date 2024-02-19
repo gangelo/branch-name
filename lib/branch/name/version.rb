@@ -3,6 +3,6 @@
 module Branch
   module Name
     # branch-name version
-    VERSION = '4.0.1'
+    VERSION = '4.0.2'
   end
 end

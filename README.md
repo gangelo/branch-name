@@ -1,8 +1,8 @@
 # `branch-name`
 
 [![Ruby](https://github.com/gangelo/branch-name/actions/workflows/ruby.yml/badge.svg?refresh=1)](https://github.com/gangelo/branch-name/actions/workflows/ruby.yml)
-[![GitHub version](http://badge.fury.io/gh/gangelo%2Fbranch-name.svg?refresh=6)](https://badge.fury.io/gh/gangelo%2Fbranch-name)
-[![Gem Version](https://badge.fury.io/rb/branch-name.svg?refresh=6)](https://badge.fury.io/rb/branch-name)
+[![GitHub version](http://badge.fury.io/gh/gangelo%2Fbranch-name.svg?refresh=7)](https://badge.fury.io/gh/gangelo%2Fbranch-name)
+[![Gem Version](https://badge.fury.io/rb/branch-name.svg?refresh=7)](https://badge.fury.io/rb/branch-name)
 [![](http://ruby-gem-downloads-badge.herokuapp.com/branch-name?type=total)](http://www.rubydoc.info/gems/branch-name/)
 [![Documentation](http://img.shields.io/badge/docs-rdoc.info-blue.svg)](http://www.rubydoc.info/gems/branch-name/)
 [![Report Issues](https://img.shields.io/badge/report-issues-red.svg)](https://github.com/gangelo/branch-name/issues)
@@ -138,7 +138,7 @@ $ branch-name create "<username>/UX-54321 Remove debug code"
 ...
 ```
 
-If you want a more **pernament solution**, you can [change the configuration `format_string` string](#creating-feature-branch-names-and-projects-examples) to include forward-slashes. 
+If you want a more **pernament solution**, you can [change the configuration `format_string` string](#creating-feature-branch-names-and-projects-examples) to include forward-slashes.
 
 Below is an example using forward-slashes and username using the `%u` format specifier (assuming it coincides with your current username): `format_string: "%u/%t %d"`
 

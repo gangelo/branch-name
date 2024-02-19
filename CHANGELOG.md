@@ -1,3 +1,10 @@
+## ['4.0.2'] - 2024-02-19
+
+Changes
+
+- Update gems.
+- Explicitly add Gemfile groups.
+
 ## ['4.0.1'] - 2024-01-24
 
 Changes
