@@ -1,3 +1,10 @@
+## ['4.0.3'] - 2024-08-03
+
+Changes
+
+- Update gems.
+- Update rexml gem to patch CVE.
+
 ## ['4.0.2'] - 2024-02-19
 
 Changes
