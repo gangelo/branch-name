@@ -53,8 +53,8 @@ Gem::Specification.new do |spec|
 
     Run `branch-name` from your command line to get started.
 
-    View the dsu README.md here: https://github.com/gangelo/branch-name
-    View the dsu CHANGELOG.md: https://github.com/gangelo/branch-name/blob/main/CHANGELOG.md
+    View the banch-name README.md here: https://github.com/gangelo/branch-name
+    View the branch-name CHANGELOG.md: https://github.com/gangelo/branch-name/blob/main/CHANGELOG.md
 
                 *
                ***

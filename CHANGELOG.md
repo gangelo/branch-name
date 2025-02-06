@@ -2,8 +2,9 @@
 
 Changes
 
-- Update gems.
-- Test support for ruby versions ["3.1.6", "3.2.6", "3.3.7", "3.4.1"]
+- Fixes support for ruby 3.4.1, whereas, the previous version was not working with ruby 3.4.1.
+- Update gems (among other gems, activesupport to '~> 8.0', '>= 8.0.1').
+- Update test support for ruby versions ["3.2.6", "3.3.7", "3.4.1"]
 
 ## ['4.0.3'] - 2024-08-03
 
