@@ -2,7 +2,7 @@ PATH
   remote: .
   specs:
     branch-name (4.0.4)
-      activesupport (>= 7.0.8, < 8.0.0)
+      activesupport (~> 8.0, >= 8.0.1)
       colorize (>= 1.1.0, < 2.0)
       os (>= 1.1, < 2.0)
       ostruct (~> 0.6.1)
@@ -13,9 +13,9 @@ PATH
 GEM
   remote: https://rubygems.org/
   specs:
-    activemodel (7.2.2.1)
-      activesupport (= 7.2.2.1)
-    activesupport (7.2.2.1)
+    activemodel (8.0.1)
+      activesupport (= 8.0.1)
+    activesupport (8.0.1)
       base64
       benchmark (>= 0.3)
       bigdecimal
@@ -27,6 +27,7 @@ GEM
       minitest (>= 5.1)
       securerandom (>= 0.3)
       tzinfo (~> 2.0, >= 2.0.5)
+      uri (>= 0.13.1)
     ast (2.4.2)
     base64 (0.2.0)
     benchmark (0.4.0)
@@ -176,6 +177,7 @@ GEM
     unicode-display_width (3.1.4)
       unicode-emoji (~> 4.0, >= 4.0.4)
     unicode-emoji (4.0.4)
+    uri (1.0.2)
     zeitwerk (2.7.1)
 
 PLATFORMS
