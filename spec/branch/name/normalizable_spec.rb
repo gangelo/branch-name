@@ -1,24 +1,5 @@
 # frozen_string_literal: true
 
-RSpec.shared_examples 'it formats the branch name properly' do
-  it 'formats the branch name properly' do
-    expect(subject).to eq branch_name
-  end
-end
-
-RSpec.shared_examples 'it formats the folder name properly' do
-  it 'formats the folder name properly' do
-    expect(subject).to eq folder_name
-  end
-end
-
-RSpec.shared_examples 'the format_string (-x) is invalid' do
-  it 'raises an error' do
-    expected_error = /did not contain %t and %d format placeholders/
-    expect { subject }.to raise_error(expected_error)
-  end
-end
-
 PROJECT_FOLDER_TOKEN_SEPARATORS = Branch::Name::Normalizable::PROJECT_FOLDER_TOKEN_SEPARATORS
 DEFAULT_PROJECT_FOLDER_TOKEN_SEPARATOR = Branch::Name::Normalizable::DEFAULT_PROJECT_FOLDER_TOKEN_SEPARATOR
 
@@ -52,6 +33,25 @@ RSpec.describe Branch::Name::Normalizable, type: :module do
   let(:ticket) { 'TICKET-12345' }
   let(:ticket_description) { 'Ticket Description' }
   let(:temp_directory) { Dir.tmpdir }
+
+  shared_examples 'it formats the branch name properly' do
+    it 'formats the branch name properly' do
+      expect(subject).to eq branch_name
+    end
+  end
+
+  shared_examples 'it formats the folder name properly' do
+    it 'formats the folder name properly' do
+      expect(subject).to eq folder_name
+    end
+  end
+
+  shared_examples 'the format_string (-x) is invalid' do
+    it 'raises an error' do
+      expected_error = /did not contain %t and %d format placeholders/
+      expect { subject }.to raise_error(expected_error)
+    end
+  end
 
   describe '#normalize_branch_name' do
     let(:branch_name) { 'TICKET_12345_Ticket_Description' }

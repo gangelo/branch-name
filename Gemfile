@@ -24,6 +24,7 @@ end
 
 group :development, :test do
   gem 'dotenv', '>= 2.8', '< 4.0'
+  gem 'irb', '~> 1.15', '>= 1.15.1'
   gem 'pry-byebug', '>= 3.9', '< 4.0'
   gem 'thor', '>= 1.3', '< 2.0'
 end

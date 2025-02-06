@@ -19,7 +19,7 @@ Gem::Specification.new do |spec|
   spec.homepage     = 'https://github.com/gangelo/branch-name'
   spec.license      = 'MIT'
 
-  spec.required_ruby_version = Gem::Requirement.new('>= 3.0.6', '< 4.0')
+  spec.required_ruby_version = Gem::Requirement.new('>= 3.2', '< 4.0')
 
   # spec.metadata["allowed_push_host"] = "TODO: Set to your gem server 'https://example.com'"
 
@@ -38,9 +38,11 @@ Gem::Specification.new do |spec|
   spec.executables = spec.files.grep(%r{\Aexe/}) { |f| File.basename(f) }
   spec.require_paths = ['lib']
 
-  spec.add_dependency 'activesupport', '>= 7.0.8', '< 8.0.0'
+  spec.add_dependency 'activesupport', '~> 8.0', '>= 8.0.1'
   spec.add_dependency 'colorize', '>= 1.1.0', '< 2.0'
   spec.add_dependency 'os', '>= 1.1', '< 2.0'
+  spec.add_dependency 'ostruct', '~> 0.6.1'
+  spec.add_dependency 'reline', '~> 0.6.0'
   spec.add_dependency 'thor', '>= 1.2', '< 2.0'
   spec.add_dependency 'thor_nested_subcommand', '>= 1.0', '< 2.0'
 
@@ -51,8 +53,8 @@ Gem::Specification.new do |spec|
 
     Run `branch-name` from your command line to get started.
 
-    View the dsu README.md here: https://github.com/gangelo/branch-name
-    View the dsu CHANGELOG.md: https://github.com/gangelo/branch-name/blob/main/CHANGELOG.md
+    View the banch-name README.md here: https://github.com/gangelo/branch-name
+    View the branch-name CHANGELOG.md: https://github.com/gangelo/branch-name/blob/main/CHANGELOG.md
 
                 *
                ***
