@@ -41,6 +41,8 @@ Gem::Specification.new do |spec|
   spec.add_dependency 'activesupport', '>= 7.0.8', '< 8.0.0'
   spec.add_dependency 'colorize', '>= 1.1.0', '< 2.0'
   spec.add_dependency 'os', '>= 1.1', '< 2.0'
+  spec.add_dependency 'ostruct', '~> 0.6.1'
+  spec.add_dependency 'reline', '~> 0.6.0'
   spec.add_dependency 'thor', '>= 1.2', '< 2.0'
   spec.add_dependency 'thor_nested_subcommand', '>= 1.0', '< 2.0'
 

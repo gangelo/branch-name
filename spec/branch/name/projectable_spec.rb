@@ -1,13 +1,5 @@
 # frozen_string_literal: true
 
-RSpec.shared_examples 'it formats the folder name properly' do
-  it 'formats the folder name properly' do
-    actual_folder_name = subject.project_folder_for branch_name
-    puts actual_folder_name
-    expect(actual_folder_name).to eq expected_folder_name
-  end
-end
-
 PROJECT_FOLDER_TOKEN_SEPARATORS = Branch::Name::Normalizable::PROJECT_FOLDER_TOKEN_SEPARATORS
 DEFAULT_PROJECT_FOLDER_TOKEN_SEPARATOR =  Branch::Name::Normalizable::DEFAULT_PROJECT_FOLDER_TOKEN_SEPARATOR
 
@@ -43,6 +35,14 @@ RSpec.describe Branch::Name::Projectable, type: :module do
     File.join(temp_directory, branch_name)
   end
   let(:temp_directory) { Dir.tmpdir }
+
+  shared_examples 'it formats the folder name properly' do
+    it 'formats the folder name properly' do
+      actual_folder_name = subject.project_folder_for branch_name
+      puts actual_folder_name
+      expect(actual_folder_name).to eq expected_folder_name
+    end
+  end
 
   describe '#project_folder_for' do
     context 'when the separator (-s) is included in Normalizable::PROJECT_FOLDER_TOKEN_SEPARATORS' do
